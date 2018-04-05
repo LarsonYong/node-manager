@@ -11,7 +11,7 @@ var MongoStore = require('connect-mongo')(session);
 
 // import routes
 // import {router as todoRoutes} from './routes/todo.server.route';
-import router  from './routes/user.server.route'
+import router  from './routes/api'
 
 const app = express();
 
@@ -20,8 +20,11 @@ const app = express();
 bb.extend(app);
 
 //connect to MongoDB
-mongoose.connect('localhost:27017/userbase');
+mongoose.connect('mongodb://localhost:27017/userbase');
 var userdb = mongoose.connection;
+
+mongoose.createConnection('mongodb://localhost:27017/todobase');
+var tododb = mongoose.connection;
 
 
 //handle mongo error
@@ -31,13 +34,20 @@ userdb.once('open', function () {
   console.log("Userbase is connected")
 });
 
+tododb.on('error', console.error.bind(console, 'connection error:'));
+tododb.once('open', function () {
+  // we're connected!
+  console.log("Todobase is connected")
+});
+
 //use sessions for tracking logins
 app.use(session({
   secret: 'work hard',
   resave: true,
   saveUninitialized: false,
   store: new MongoStore({
-    mongooseConnection: userdb
+    mongooseConnection: userdb,
+    mongooseConnection: tododb
   })
 }));
 
@@ -51,8 +61,10 @@ app.use(function(req,res,next){
 
 // configure app
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.urlencoded({ extended:false }));
+
+app.use(bodyParser.json({ type: 'application/*+json' }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set the port

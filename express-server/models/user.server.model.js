@@ -5,11 +5,15 @@ var UserSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    trim: true
+    trim: true,
+    maxlength: 20,
+    minlength: 3
   },
   password: {
     type: String,
     required: true,
+    maxlength:10,
+    minlength:3
   }
 });
 
