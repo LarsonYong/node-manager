@@ -13,7 +13,8 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     maxlength:10,
-    minlength:3
+    minlength:3,
+    select: false
   }
 });
 

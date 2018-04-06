@@ -1,16 +1,30 @@
 // ./express-server/controllers/todo.server.controller.js
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import config from '../config';
+import VerifyToken from './token.controller';
 
 //import models
 import Todo from '../models/todo.server.model';
 
 export const getTodos = (req,res) => {
-  Todo.find().exec((err,todos) => {
-    if(err){
-    return res.json({'success':false,'message':'Some Error',err});
+  var token = req.headers['x-access-token'];
+  if (!token) {
+    return res.status(401).send({ auth: false, message: 'No token provided.' });
+  }
+
+  jwt.verify(token, config.secret, function (err, decoded) {
+    if (err) {
+      return res.status(500).send({auth: false, message: 'Failed to authenticate token.'})
     }
-return res.json({'success':true,'message':'Todos fetched successfully',todos});
-  });
+    Todo.find().exec((err,todos) => {
+      if(err){
+        return res.json({'success':false,'message':'Some Error',err});
+      }
+      return res.json({'success':true,'message':'Todos fetched successfully',todos});
+    });
+  })
 }
 
 
@@ -26,6 +40,7 @@ return res.json({'success':true,'message':'Todo added successfully',todo});
 
 
 export const updateTodo = (req,res) => {
+  // Users.findOne({_id: id}).select('+password').exec(...);
   Todo.findOneAndUpdate({ _id:req.body.id }, req.body, { new:true }, (err,todo) => {
     if(err){
     return res.json({'success':false,'message':'Some Error','error':err});

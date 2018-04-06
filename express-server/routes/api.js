@@ -3,9 +3,16 @@ import express from 'express';
 //import controller file
 import * as todoController from '../controllers/todo.server.controller';
 import * as userController from '../controllers/user.server.controller';
+import * as authController from '../controllers/auth.controller';
 
 // get an instance of express router
 const router = express.Router();
+
+router.route('/login/')
+    .post(authController.login);
+
+// router.route('/auth/')
+//     .post(authController.auth);
 
 router.route('/user/')
     .get(userController.getUsers)
