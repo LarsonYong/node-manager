@@ -11,7 +11,6 @@ function login(username, password) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      // 'Content-Type': 'application/*+json',
     },
     body: JSON.stringify({username,password})
   };
@@ -21,19 +20,23 @@ function login(username, password) {
             status: response.status
           })
         ).then(res => {
-          console.log("22222")
-          const user = res.data.user.username
-          console.log(user)
-          // login successful if there's a jwt token in the response
-            if (user && res.token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-            }
+          if (res.data.auth) {
+            const user = res.data.user.username
+            // login successful if there's a jwt token in the response
+              if (user && res.data.token) {
+                  // store user details and jwt token in local storage to keep user logged in between page refreshes
+                  localStorage.setItem('user', JSON.stringify(user));
+                  localStorage.setItem('token', JSON.stringify(res.data.token));
+              }
+              return user;
+          }
+          else {
+            return Promise.reject(res.data.message)
+          }
 
-            return user;
         })
       )
-      }
+}
 
 
 function logout(){
@@ -46,12 +49,14 @@ function getAll() {
     headers: authHeader()
   };
 
-  return fetch('http://localhost:4001/api/user').then(handleResponse);
+  return fetch('http://localhost:4001/api/user', requestOptions)
+          .then(resp => resp.json())
+          .then(json => {
+            return json.users;
+          })
 }
 
+
 function handleResponse(response) {
-  if (!response.auth) {
-    return Promise.reject(response.message);
-  }
-  return response.json();
+  
 }

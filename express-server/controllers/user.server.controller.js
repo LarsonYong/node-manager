@@ -15,7 +15,7 @@ export const getUsers = (req, res) => {
 
   jwt.verify(token, config.secret, function (err, decoded) {
     if (err) {
-      return res.status(500).send({auth: false, message: 'Failed to authenticate token.'})
+      return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
     }
     User.find().exec((err,users) => {
       if (err){

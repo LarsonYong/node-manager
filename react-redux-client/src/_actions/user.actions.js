@@ -45,11 +45,11 @@ function logout() {
 function getAll() {
   return dispatch => {
     dispatch(request());
-
+    
     userService.getAll()
         .then(
-          users => dispatch(success(users)),
-          error => dispatch(failure(error))
+          users => {dispatch(success(users))},
+          error => {dispatch(failure(error))}
         );
   };
 
