@@ -19,7 +19,7 @@ export const login = (req,res) => {
         var token =jwt.sign({id: user._id}, config.secret, {
           expiresIn: 43200 //expires in 24 hours
         });
-        res.status(202).send({'auth': true, 'message':'Success login','token':token})
+        return res.status(202).send({'auth': true, 'message':'Success login','user':user,'token':token})
       }
       else {
         res.status(401).send({'auth':false, 'message':'Wrong password'})
