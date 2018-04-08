@@ -1,0 +1,54 @@
+.margT {
+  margin-top: -53px;
+  z-index: 10;
+}
+.content-container {
+  width: 75%;
+  margin-left: 12%;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+  height: 700px;;
+}
+.welcome-area {
+  height: 53px;
+}
+.welcome {
+  margin-top:0;
+  padding-top: 10px;
+  padding-left: 5%;
+  color: #8c8686;
+  width: 80%;
+  float: left;
+  margin-bottom: 0;
+}
+.other {
+  margin-top: 60px;
+  margin-left: 60px;
+  height: 200px;
+}
+.weather {
+  height: 150px;
+
+}
+.welcome-icon {
+  height: 34px;
+  float: right;
+  margin-right: 5%;
+  margin-top: 15px;
+}
+.outline {
+  border: 1px solid #28a745;
+}
+.content {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.shotcut {
+  height: 140px;
+}
+.template1{
+  font-size: 50px;
+  margin-top: 30px;
+  margin-left: 50px;
+}

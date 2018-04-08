@@ -1,0 +1,36 @@
+#top-nav {
+  position: relative;
+  top:0;
+  right: 0;
+  left: 0;
+  display: block;
+  margin: 0;
+  width: 100%;
+  min-width: 1024px;
+  height: 60px;
+  /* max-height: 44px; */
+  background: #fff;
+  font-size: 17px
+}
+.top-ul {
+  overflow: hidden;
+  height: 60px;
+  margin-right: 10%;
+  margin-bottom: 0px;
+}
+.top-user {
+  height: 40px;
+  float: right;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.top-logout {
+  height: 40px;
+  margin-top: 20px;
+  float:right;
+  margin-right: 10px;
+}
+.top-logo {
+  margin-left: 7%;
+  margin-top: 10px;
+}

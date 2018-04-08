@@ -1,0 +1,26 @@
+.body {
+  background-color: #e5eef5;
+}
+.App {
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+}
+li {
+  display: inline-block;
+}
+body {
+  background-color: #e5eef5;
+}
+a {
+  color: #000000;
+
+}
+a: hover {
+  text-decoration: none;
+}
+.container {
+  width:75%;
+  
+}

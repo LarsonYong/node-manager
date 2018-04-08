@@ -52,11 +52,15 @@ function getAll() {
   return fetch('http://localhost:4001/api/user', requestOptions)
           .then(resp => resp.json())
           .then(json => {
+            if (json.auth){
+              return Promise.reject(json.message)
+            }
+
             return json.users;
           })
 }
 
 
 function handleResponse(response) {
-  
+
 }
