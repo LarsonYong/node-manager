@@ -17,7 +17,7 @@ export const login = (req,res) => {
       if (user.password === req.body.password) {
         // create a token
         var token =jwt.sign({id: user._id}, config.secret, {
-          expiresIn: 43200 //expires in 24 hours
+          expiresIn: 86400 //expires in 24 hours
         });
 
         var userDetail = {'username':user.username,}

@@ -1,17 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import {IndexRoute, browserHistory} from 'react-router'
 import { connect } from 'react-redux';
 import { userActions } from '../_actions';
+import { authActions } from '../_actions';
 import '../_css/Home.css';
+import { userService } from '../_services';
 
+var Home = require('../_components/Home')
 var Nav = require('../_components/Nav');
 var TopBar = require('../_components/TopBar');
 var Weather = require('../_components/Weather');
 var Todo = require('../_components/Todo');
+var NodeDisplay = require('../_components/NodeDisplay');
+var Spec = require('../_components/Spec');
 
 class HomePage extends React.Component {
     componentDidMount() {
-        this.props.dispatch(userActions.getAll());
+      userService.verifyToken1();
+      this.props.dispatch(userActions.getAll());
     }
 
     handleDeleteUser(id) {
@@ -19,52 +31,28 @@ class HomePage extends React.Component {
     }
 
     render() {
+        const {spec} = this.props.params
         const { user, users } = this.props;
         return (
-          <div>
-            <TopBar name={user}/>
-            <Nav />
-            <div className="content-container margT">
-                <div class="welcome-area">
-                  <h1 class="welcome">WELCOME ON DASHBOARD</h1>
-                  <img class="welcome-icon" src={require('../_assets/Icons/pin.png')}></img>
-                </div>
-                <div class="content">
-                  <div class="weather outline">
-                    <Weather />
-                  </div>
-                  <div class="col-md-6 outline">
-                      <Todo />
-                  </div>
-                  <div class="col-md-6 outline">
-                    <div class="other">
-                    <div >Hi {user}!</div>
-                    <p>You're logged in with React & JWT!!</p>
-                    <h3>Users from secure api end point:</h3>
-                      {users.loading && <em>Loading users...</em>}
-                      {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-                      {users.items &&
-                        <ul>
-                          {users.items.map((user, index) =>
-                              <li key={user._id}>
-                                  {user.username }
-                                  </li>
-                                )}
-                        </ul>
-                      }
-
-                    <p>
-                    <Link to="/login">Logout</Link>
-                    </p>
-                    </div>
-
-                    </div>
-                    <div class="shotcut outline col-md-6">
-                    <div class="template1">Shotcut area</div>
-                    </div>
-                </div>
+          <Router history={browserHistory}>
+            <div id="Home">
+              <TopBar name={user}/>
+              <Nav />
+              <Switch>
+                <Route exact path="/home" render={() => <Home user={this.props.user} users={this.props.users} />}/>
+                <Route exact path="/node" render={function(){
+                  history.pushState(null, '/node');
+                  return <NodeDisplay />
+                }} />
+                <Route path='/:spec' component={Spec} />
+                <Route render={function () {
+                  return <div class="container"><p>Not Found</p></div>
+                }} />
+              </Switch>
             </div>
-          </div>
+          </Router>
+
+
         );
     }
 }
@@ -80,3 +68,5 @@ function mapStateToProps(state) {
 
 const connectedHomePage = connect(mapStateToProps)(HomePage);
 export { connectedHomePage as HomePage };
+
+// <Route path="/node" render={() => <NodeDisplay />}/>

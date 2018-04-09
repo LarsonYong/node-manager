@@ -1,6 +1,6 @@
 import React,  {Component} from 'react';
 import '../_css/Nav.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 class Nav extends React.Component {
   constructor(props){
@@ -8,16 +8,21 @@ class Nav extends React.Component {
   }
   render(){
     return (
+      <nav>
       <div id="Nav">
         <div class="nav-icons">
+          <NavLink to="/" >
           <div class="nav-icon-area selected">
             <img class="nav-icon" src={require('../_assets/Icons/dash-blue.png')}></img>
             <div class="nav-icon-title">Dashboard</div>
           </div>
+          </NavLink>
+          <NavLink to="/node">
           <div class="nav-icon-area">
             <img class="nav-icon" src={require('../_assets/Icons/node-green.png')}></img>
             <div class="nav-icon-title">Node Monitor</div>
           </div>
+          </NavLink>
           <div class="nav-icon-area">
             <img class="nav-icon" src={require('../_assets/Icons/todo-yellow.png')}></img>
             <div class="nav-icon-title">Node Config</div>
@@ -27,7 +32,8 @@ class Nav extends React.Component {
             <div class="nav-icon-title">User Admin</div>
           </div>
         </div>
-      </div>
+        </div>
+      </nav>
     )
   }
 }

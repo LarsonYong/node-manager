@@ -6,7 +6,7 @@ import { history } from '../_helpers';
 export const userActions = {
   login,
   logout,
-  getAll
+  getAll,
 };
 
 function login(username, password) {
@@ -17,7 +17,7 @@ function login(username, password) {
         .then(
           user => {
             dispatch(success(user));
-            history.push('/');
+            history.push('/home');
           },
           error => {
             dispatch(failure(error));
@@ -45,7 +45,7 @@ function logout() {
 function getAll() {
   return dispatch => {
     dispatch(request());
-    
+
     userService.getAll()
         .then(
           users => {dispatch(success(users))},

@@ -1,9 +1,12 @@
 import { authHeader } from '../_helpers'
+import { browserHistory } from 'react-router';
 
 export const userService = {
   login,
   logout,
-  getAll
+  getAll,
+  verifyToken,
+  verifyToken1
 };
 
 function login(username, password) {
@@ -52,15 +55,50 @@ function getAll() {
   return fetch('http://localhost:4001/api/user', requestOptions)
           .then(resp => resp.json())
           .then(json => {
-            if (json.auth){
+            if (!json.auth){
+              if (json.err && json.err.message === 'jwt expired') {
+                browserHistory.replace('/login');
+                // location.href ='/login';
+              }
               return Promise.reject(json.message)
             }
-
             return json.users;
           })
 }
 
 
-function handleResponse(response) {
+function verifyToken() {
+  const requestOptions = {
+    method: 'GET',
+    headers: authHeader()
+  };
+  return fetch('http://localhost:4001/api/token', requestOptions)
+          .then(resp => resp.json())
+          .then(json => {
+            console.log(json)
+            if (!json.auth){
+              console.log("Token not good");
+              return Promise.reject(json.message);
+            }
+            console.log("Token good")
+            return json.auth;
+          })
+}
 
+function verifyToken1() {
+  const requestOptions = {
+    method: 'GET',
+    headers: authHeader()
+  };
+  return fetch('http://localhost:4001/api/token', requestOptions)
+          .then(resp => resp.json())
+          .then(json => {
+            console.log(json)
+            if (!json.auth){
+              console.log("Token not good");
+              location.href='login'
+            }
+            console.log("Token good")
+            return json.auth;
+          })
 }

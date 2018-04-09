@@ -19,9 +19,9 @@ export const getUsers = (req, res) => {
     }
     User.find().exec((err,users) => {
       if (err){
-        return res.json({'success':false,'message':'Some Error',err});
+        return res.json({'auth':false,'message':'Some Error',err});
       }
-      return res.json({'success':true,'message':'User fetched successfully','decoded':decoded, users});
+      return res.json({'auth':true,'message':'User fetched successfully','decoded':decoded, users});
     });
   })
 }
