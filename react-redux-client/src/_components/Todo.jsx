@@ -9,7 +9,9 @@ class Todo extends React.Component {
   render(){
     return (
         <div id="Todo">
-        <div class="template">Todo list component</div>
+          <div class="glass">
+            <div class="template">Todo list component</div>
+          </div>
         </div>
     )
   }

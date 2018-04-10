@@ -9,7 +9,9 @@ class NodeDisplay extends React.Component {
 
   render () {
     return (
-      <div>NodeDisplay</div>
+      <div className="content-container blurred margT">
+        
+      </div>
     )
   }
 }

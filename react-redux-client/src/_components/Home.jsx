@@ -17,19 +17,19 @@ class Home extends React.Component {
       render() {
         const {user, users} = this.props;
         return (
-            <div className="content-container margT">
+            <div className=" content-container   margT">
                 <div class="welcome-area">
                   <h1 class="welcome">WELCOME ON DASHBOARD</h1>
                   <img class="welcome-icon" src={require('../_assets/Icons/pin.png')}></img>
                 </div>
                 <div class="content">
-                  <div class="weather outline">
+                  <div class="weather ">
                     <Weather />
                   </div>
-                  <div class="col-md-6 outline">
+                  <div class="col-md-6 ">
                       <Todo />
                   </div>
-                  <div class="col-md-6 outline">
+                  <div class="col-md-6 ">
                     <div class="other">
                     <div >Hi {user}!</div>
                     <p>You're logged in with React & JWT!!</p>
@@ -52,7 +52,7 @@ class Home extends React.Component {
                     </div>
 
                     </div>
-                    <div class="shotcut outline col-md-6">
+                    <div class="shotcut  col-md-6">
                     <div class="template1">Shotcut area</div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ var TopBar = require('../_components/TopBar');
 var Weather = require('../_components/Weather');
 var Todo = require('../_components/Todo');
 var NodeDisplay = require('../_components/NodeDisplay');
-var Spec = require('../_components/Spec');
+// var Spec = require('../_components/Spec');
 
 class HomePage extends React.Component {
     componentDidMount() {
@@ -31,7 +31,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        const {spec} = this.props.params
+
         const { user, users } = this.props;
         return (
           <Router history={browserHistory}>
@@ -39,12 +39,17 @@ class HomePage extends React.Component {
               <TopBar name={user}/>
               <Nav />
               <Switch>
-                <Route exact path="/home" render={() => <Home user={this.props.user} users={this.props.users} />}/>
-                <Route exact path="/node" render={function(){
+                <Route path="/home" render={() => <Home user={this.props.user} users={this.props.users} />}/>
+                <Route path="/node" render={function(){
                   history.pushState(null, '/node');
                   return <NodeDisplay />
                 }} />
-                <Route path='/:spec' component={Spec} />
+                <Route path="/login" render={function() {
+                  location.href='/login'
+                }} />
+                <Route path='/*' render={function () {
+                  return <div class="container"><p>Not Found</p></div>
+                }} />
                 <Route render={function () {
                   return <div class="container"><p>Not Found</p></div>
                 }} />
@@ -70,3 +75,5 @@ const connectedHomePage = connect(mapStateToProps)(HomePage);
 export { connectedHomePage as HomePage };
 
 // <Route path="/node" render={() => <NodeDisplay />}/>
+// <Route path='/:spec' component={Spec} />
+// const {spec} = this.props.params

@@ -5,4 +5,7 @@
   font-size: 50px;
   margin-top: 100px;
   margin-left: 50px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
 }
