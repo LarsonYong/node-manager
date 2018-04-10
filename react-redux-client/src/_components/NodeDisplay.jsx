@@ -10,7 +10,7 @@ class NodeDisplay extends React.Component {
   render () {
     return (
       <div className="content-container blurred margT">
-        
+        <div class="temp container col-6"> </div>
       </div>
     )
   }

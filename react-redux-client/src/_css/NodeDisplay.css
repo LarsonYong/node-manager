@@ -1,50 +1,15 @@
-.node-body{
 
- width: 100%;
- height: 100%;
- font-family: Arial, Helvetica;
- letter-spacing: 0.02em;
-  font-weight: 400;
- -webkit-font-smoothing: antialiased;
-}
 
 .blurred {
-  background-image:url(../_assets/blur.jpg);
+  background-image:url(../_assets/blur_99.png);
   background-position: -200px calc(50%);;
 
 }
-
-/* Form which you dont need */
-.user-login-box{
-  position: relative;
-  margin-top: 50px;
-  text-align: center;
-  z-index: 1;
-}
-.user-login-box > *{
-  display: inline-block;
+.temp {
+  background-color: white;
+  height: 200px;
   width: 200px;
-}
-
-.user-icon{
-  width: 100px;
-  height: 100px;
-  position: relative;
-  border-radius: 50%;
-  background-size: contain;
-}
-
-.user-name{
-  margin-top: 15px;
-  margin-bottom: 15px;
-  color: white;
-}
-
-input.user-password{
-  width: 120px;
-  height: 18px;
-  opacity: 0.4;
-  border-radius: 2px;
-  padding: 5px 15px;
-  border: 0;
+  margin-left: 10%;
+  margin-top: 100px;
+  border: 1.3px solid black;
 }

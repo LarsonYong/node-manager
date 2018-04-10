@@ -9,7 +9,15 @@ class Weather extends React.Component {
   render(){
     return (
       <div id="weather">
-        <div class="location">Current location: Fremont, CA</div>
+        <div class="location">WEATHER FORCAST
+        <span>  Current location: Fremont, CA</span>
+        </div>
+
+        <img class='weather-icon' src={require('../_assets/cloud.png')}></img>
+        <img class='weather-icon' src={require('../_assets/sunny.png')}></img>
+        <img class='weather-icon' src={require('../_assets/sunny.png')}></img>
+        <img class='weather-icon' src={require('../_assets/running.png')}></img>
+        <img class='weather-icon' src={require('../_assets/sunny.png')}></img>
       </div>
     )
    }

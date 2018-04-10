@@ -4,4 +4,15 @@
   font-weight:600;
   padding-left: 10%;
   padding-top: 50px;
+  width: 30%;
+  float: left;
+  margin-right: 240px;
+}
+.weather-icon {
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin-left: 50px;
+  margin-top: 45px;
+
 }

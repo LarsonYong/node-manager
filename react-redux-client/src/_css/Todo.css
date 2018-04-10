@@ -9,3 +9,12 @@
   text-align: center;
   z-index: 1;
 }
+.glass {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  /*width: 85%;*/
+}
+.right {
+  float: right;
+}

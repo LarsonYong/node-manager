@@ -19,17 +19,17 @@ class Home extends React.Component {
         return (
             <div className=" content-container   margT">
                 <div class="welcome-area">
-                  <h1 class="welcome">WELCOME ON DASHBOARD</h1>
+                  <h1 class="welcome ">WELCOME ON DASHBOARD</h1>
                   <img class="welcome-icon" src={require('../_assets/Icons/pin.png')}></img>
                 </div>
                 <div class="content">
-                  <div class="weather ">
+                  <div class="weather white">
                     <Weather />
                   </div>
-                  <div class="col-md-6 ">
+                  <div class="col-6 white">
                       <Todo />
                   </div>
-                  <div class="col-md-6 ">
+                  <div class="col-6 white">
                     <div class="other">
                     <div >Hi {user}!</div>
                     <p>You're logged in with React & JWT!!</p>
@@ -52,7 +52,7 @@ class Home extends React.Component {
                     </div>
 
                     </div>
-                    <div class="shotcut  col-md-6">
+                    <div class="shotcut white col-6">
                     <div class="template1">Shotcut area</div>
                     </div>
                 </div>
