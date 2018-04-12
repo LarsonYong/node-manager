@@ -25,7 +25,8 @@ var userdb = mongoose.connection;
 
 mongoose.createConnection('mongodb://localhost:27017/todobase');
 var tododb = mongoose.connection;
-
+mongoose.createConnection('mongodb://localhost:27017/nodebase');
+var nodedb = mongoose.connection;
 
 //handle mongo error
 userdb.on('error', console.error.bind(console, 'connection error:'));
@@ -39,6 +40,13 @@ tododb.once('open', function () {
   // we're connected!
   console.log("Todobase is connected")
 });
+
+nodedb.on('error', console.error.bind(console, 'connection error:'));
+nodedb.once('open', function () {
+  // we're connected!
+  console.log("Nodebase is connected")
+});
+
 
 //use sessions for tracking logins
 app.use(session({

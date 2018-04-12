@@ -4,6 +4,7 @@ import express from 'express';
 import * as todoController from '../controllers/todo.server.controller';
 import * as userController from '../controllers/user.server.controller';
 import * as authController from '../controllers/auth.controller';
+import * as nodeController from '../controllers/node.server.controller'
 import verifyToken from '../controllers/token.controller'
 
 // get an instance of express router
@@ -35,6 +36,11 @@ router.route('/todo/id/:id')
       .delete(todoController.deleteTodo);
 
 router.route('/token')
-      .get(verifyToken)
+      .get(verifyToken);
+
+router.route('/node/')
+    .get(nodeController.getNodes)
+    .post(nodeController.addNode)
+    .put(nodeController.updateNode);
 
 export default router;

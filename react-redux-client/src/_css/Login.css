@@ -1,0 +1,19 @@
+.fixed {
+  margin-top: 200px;
+  width: 33%;
+  margin-left: 33%;
+  background-image:url(../_assets/blur_99.png);
+}
+.login-title {
+  text-align: center;
+  margin-top: 30px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-control {
+  /* width: 85%; */
+}
+.login-form {
+  margin-left: 10px;
+}
