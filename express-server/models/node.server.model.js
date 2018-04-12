@@ -10,7 +10,7 @@ var NodeSchema = new mongoose.Schema({
     SensorBoardVersion: String
   },
   Hardware: {
-    SensorBoar: String,
+    SensorBoard: String,
     Platform: String,
     WIFIModule: String,
     FourGModule: String,

@@ -14,17 +14,13 @@ class Nav extends React.Component {
 
   componentWillUpdate() {
     const url = location.pathname.split("/")[1];
-
     const node = ReactDOM.findDOMNode(this.refs.home).classList
-    console.log(node)
     switch(url){
       case 'home':
-        console.log('22222: HOME');
         ReactDOM.findDOMNode(this.refs.home).classList.add('selected')
         ReactDOM.findDOMNode(this.refs.node).classList.remove('selected')
         break;
       case 'node':
-        console.log('CUrrent url NODE')
         ReactDOM.findDOMNode(this.refs.home).classList.remove('selected')
         ReactDOM.findDOMNode(this.refs.node).classList.add('selected')
         break;

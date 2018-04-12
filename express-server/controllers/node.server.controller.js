@@ -23,7 +23,7 @@ export const getNodes = (req, res) => {
         return res.json({'auth':true, 'message':"Some Error", err})
       }
       console.log(nodes);
-      return res.json({'auth': true, 'message':'Nodes fetched successfully','decoded': decoded, 'nodes': nodes})
+      return res.status(200).send({'auth': true, 'message':'Nodes fetched successfully','decoded': decoded, 'nodes': nodes})
     })
   })
 }
@@ -37,19 +37,82 @@ export const addNode = (req,res) => {
   jwt.verify(token, config.secret, function (err, decoded) {
     if (err) {
       return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
-
     }
+    Node.count({"UnitID":req.body.UnitID}).exec((err,data) => {
+      if(err){
+        return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
+      }
+      if(data > 0){
+        return res.status(500).send({auth: false, message: 'Unit already exist.'})
+      }
+      newNode.save((err, node) => {
+        if (err){
+          return res.json({"auth": true, "success":false, "message": err})
+        }
+        res.status(200).send({"auth": true, "success": true, "message": "Node added", node})
+      })
+    })
+    const newNode = new Node(req.body);
+
   })
 }
 
 export const updateNode = (req,res) => {
+  var token = req.headers['x-access-token'];
+  if (!token) {
+      return res.status(401).send({ auth: false, message: 'No token provided.' });
+    }
 
+  jwt.verify(token, config.secret, function (err, decoded) {
+    if (err) {
+      return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
+    }
+
+  })
 }
 
 export const getNode = (req, res ) => {
+  var token = req.headers['x-access-token'];
+  if (!token) {
+      return res.status(401).send({ auth: false, message: 'No token provided.' });
+    }
 
+  jwt.verify(token, config.secret, function (err, decoded) {
+    if (err) {
+      return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
+    }
+    Node.find({"UnitID":req.params.id}, function(err, data){
+      if (data.length === 1){
+        return res.status(200).send({"auth": true, "success":true, "message": "Node fetched", data})
+      }else {
+        return res.status(404).send({"auth": true, "success":false,"message":"Can not find this node!"})
+      }
+    })
+  })
 }
 
 export const deleteNode = (req, res) => {
+  var token = req.headers['x-access-token'];
+  if (!token) {
+      return res.status(401).send({ auth: false, message: 'No token provided.' });
+    }
 
+  jwt.verify(token, config.secret, function (err, decoded) {
+    if (err) {
+      return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
+    }
+    Node.find({"UnitID":req.params.id}, function(err, data){
+      console.log(data)
+      console.log(typeof data);
+      console.log(data.length);
+      if (data.length === 1){
+        Node.findOneAndRemove({"UnitID":req.params.id},function(err) {
+          console.log("Node removed")
+          return res.status(200).send({"auth": true, "success":true, "message": "Node removed"})
+        })
+      }else{
+        return res.status(404).send({"auth": true, "success":false,"message":"Node does not exist!"})
+      }
+    })
+  })
 }

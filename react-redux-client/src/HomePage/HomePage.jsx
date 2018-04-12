@@ -11,14 +11,14 @@ import { userActions } from '../_actions';
 import { authActions } from '../_actions';
 import '../_css/Home.css';
 import { userService } from '../_services';
+import { NodeDisplay } from '../_components/NodeDisplay';
 
 var Home = require('../_components/Home')
 var Nav = require('../_components/Nav');
 var TopBar = require('../_components/TopBar');
 var Weather = require('../_components/Weather');
 var Todo = require('../_components/Todo');
-var NodeDisplay = require('../_components/NodeDisplay');
-// var Spec = require('../_components/Spec');
+// var NodeDisplay = require('../_components/NodeDisplay');
 
 class HomePage extends React.Component {
     componentDidMount() {

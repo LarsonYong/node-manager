@@ -39,13 +39,13 @@ export const addUser = (req, res) => {
     const newUser = new User(req.body);
     newUser.save((err, user) => {
       if (err){
-        return res.json({'success':false,'message':'Some Error',err});
+        return res.json({'auth':true, 'success':false,'message':'Some Error',err});
       }
       // create a token
       var token =jwt.sign({id: user._id}, config.secret, {
         expiresIn: 86400 //expires in 24 hours
       });
-      res.status(200).send({'success':true,'message':'User added successfully','token':token, user});
+      res.status(200).send({'auth':true, 'success':true,'message':'User added successfully','token':token, user});
     })
   })
 }
@@ -62,10 +62,10 @@ export const updateUser = (req, res) => {
     }
     User.findOneAndUpdate({_id:req.body.id}, req.body, {new: true}, (err, user) => {
       if(err){
-      return res.json({'success':false,'message':'Some Error','error':err});
+      return res.json({'auth':true, 'success':false,'message':'Some Error','error':err});
       }
       console.log(user);
-      return res.json({'success':true,'message':'Updated successfully',user});
+      return res.json({'auth':true, 'success':true,'message':'Updated successfully',user});
     })
   })
 }
@@ -81,13 +81,13 @@ export const getUser = (req,res) => {
     }
     User.find({_id:req.params.id}).exec((err,user) => {
       if(err){
-      return res.json({'success':false,'message':'Some Error',err});
+      return res.json({'auth':true, 'success':false,'message':'Some Error',err});
       }
       if(user.length){
-        return res.json({'success':true,'message':'User fetched by id successfully',user});
+        return res.json({'auth':true, 'success':true,'message':'User fetched by id successfully',user});
       }
       else{
-        return res.json({'success':false,'message':'User with the given id not found'});
+        return res.json({'auth':true, 'success':false,'message':'User with the given id not found'});
       }
     })
   })
@@ -104,9 +104,9 @@ export const deleteUser = (req,res) => {
     }
     User.findByIdAndRemove(req.params.id, (err,user) => {
       if(err){
-        return res.json({'success':false,'message':'Some Error',err});
+        return res.json({'auth':true, 'success':false,'message':'Some Error',err});
       }
-      return res.json({'success':true,'message':user.username+' deleted successfully'});
+      return res.json({'auth':true, 'success':true,'message':user.username+' deleted successfully'});
     })
   })
 }

@@ -51,7 +51,6 @@ function getAll() {
     method: 'GET',
     headers: authHeader()
   };
-
   return fetch('http://localhost:4001/api/user', requestOptions)
           .then(resp => resp.json())
           .then(json => {
@@ -93,7 +92,6 @@ function verifyToken1() {
   return fetch('http://localhost:4001/api/token', requestOptions)
           .then(resp => resp.json())
           .then(json => {
-            console.log(json)
             if (!json.auth){
               console.log("Token not good");
               location.href='login'

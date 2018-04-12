@@ -7,9 +7,12 @@
 }
 .temp {
   background-color: white;
-  height: 200px;
+  padding-top: 20px;
   width: 200px;
   margin-left: 10%;
   margin-top: 100px;
   border: 1.3px solid black;
+}
+.dispT{
+  margin-top: 20px;
 }

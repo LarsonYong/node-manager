@@ -43,4 +43,8 @@ router.route('/node/')
     .post(nodeController.addNode)
     .put(nodeController.updateNode);
 
+router.route('/node/id/:id')
+      .get(nodeController.getNode)
+      .delete(nodeController.deleteNode);
+
 export default router;
