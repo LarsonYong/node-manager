@@ -31,7 +31,7 @@
   margin-left: 11%;
   background-color: white;
   border-radius: 3px;
-  /* box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4); */
+  box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
   height: 750px;
   /* background-image:url(../_assets/blur_3.png);
   background-position: -130px 53%;; */

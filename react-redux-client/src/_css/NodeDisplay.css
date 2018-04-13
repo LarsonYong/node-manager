@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poor+Story');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 .content-container {
   width: 78%;
   margin-left: 11%;
@@ -32,6 +32,11 @@
 	box-shadow: 0 2px 1px #777;
   height:168px;
 }
+/* .card:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+} */
 .card-title {
   margin: 5px 5px;
 }
@@ -59,10 +64,10 @@
   background-color: #43c37f;
 }
 .card-body-left h2 {
-  padding-left: 35px;
+  padding-left: 20px;
   font-size: 40px;
   font-weight: 400;
-  /* font-family: 'Poor Story', cursive; */
+  font-family: 'Pacifico', cursive;
 }
 .card-body-right h2 {
   padding-left: 20px;
@@ -83,11 +88,11 @@
 }
 .TK1 {
   /* background-color: #fa8231; */
-  background-color: #eaecd3;
+  background-color: #d4f7e8;
 }
 .XU4 {
   /* background-color: #20bf6b; */
-    background-color: #d4f7e8;
+    background-color: #eaecd3;
 }
 .RPI {
   /* background-color: #fc5c65; */
