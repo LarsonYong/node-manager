@@ -7,9 +7,11 @@ var NodeSchema = new mongoose.Schema({
     PrimaryInterface: String,
     IP_address: String,
     BackDoor_IP: String,
-    SensorBoardVersion: String
+    SensorBoardVersion: String,
+    AP: String
   },
   Hardware: {
+    UPS: String,
     SensorBoard: String,
     Platform: String,
     WIFIModule: String,
@@ -20,7 +22,6 @@ var NodeSchema = new mongoose.Schema({
       IP_address: String
     },
     ResetBoard: String,
-    Battery: String,
     Camera: {
       manufacturer: String,
       Type: String,

@@ -23,8 +23,8 @@ ul {
   border-radius: 5px;
 }
 .nav-icon-area:hover {
-  /*background-color: #555555;*/
-  background-color: #fdfdfd;
+  background-color: #555555;
+  /* background-color: #fdfdfd; */
   position:relative;
 }
 .nav-icon {
@@ -34,13 +34,13 @@ ul {
   margin-top: 5px;
 }
 .nav-icon-title {
-  color: black;
+  color: white;
   margin-top: 5px;
   text-align: center;
   margin-bottom: 0;
 }
 .selected {
-  background-color: #fdfdfd;
+  background-color: #555555;
   position:relative;
 }
 .selected:after {
@@ -52,7 +52,7 @@ ul {
    margin: 0 auto;
    width: 0;
    height: 0;
-   border-top: solid 15px #fdfdfd;
+   border-top: solid 15px #555555;
    border-left: solid 10px transparent;
    border-right: solid 10px transparent;
 }

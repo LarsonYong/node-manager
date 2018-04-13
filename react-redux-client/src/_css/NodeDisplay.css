@@ -1,18 +1,99 @@
-
-
-.blurred {
-  background-image:url(../_assets/blur_99.png);
-  background-position: -200px calc(50%);;
-
-}
-.temp {
+@import url('https://fonts.googleapis.com/css?family=Poor+Story');
+.content-container {
+  width: 78%;
+  margin-left: 11%;
   background-color: white;
+  border-radius: 3px;
+  /* box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4); */
+  height: 750px;
+  /* background-image:url(../_assets/blur_3.png);
+  background-position: -130px 53%;; */
+}
+
+.marr {
+
+  margin-top:  -63px;
+}
+.card-area{
+  margin: 0 20px 20px 20px;
   padding-top: 20px;
-  width: 200px;
-  margin-left: 10%;
-  margin-top: 100px;
-  border: 1.3px solid black;
+
 }
 .dispT{
   margin-top: 20px;
+}
+.card {
+  width: 300px;
+  float: left;
+  margin: 10px 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px #777;
+	-moz-box-shadow: 0 2px 1px #777;
+	box-shadow: 0 2px 1px #777;
+  height:168px;
+}
+.card-title {
+  margin: 5px 5px;
+}
+.card-body {
+  height: 168px
+
+}
+.unitID {
+  font-weight: bold;
+  font-size: 45px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.card-body p {
+  /* margin-left: 120px; */
+  margin-right: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+.card-body-left {
+  width: 50%;
+  padding-top: 13%;
+  float: left;
+  height: 168px;
+  background-color: #43c37f;
+}
+.card-body-left h2 {
+  padding-left: 35px;
+  font-size: 40px;
+  font-weight: 400;
+  /* font-family: 'Poor Story', cursive; */
+}
+.card-body-right h2 {
+  padding-left: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 50px
+}
+.card-body-right p {
+  margin-left: 55px;
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+.card-body-right {
+  width: 50%;
+  float: left;
+  height:168px;
+}
+.TK1 {
+  /* background-color: #fa8231; */
+  background-color: #eaecd3;
+}
+.XU4 {
+  /* background-color: #20bf6b; */
+    background-color: #d4f7e8;
+}
+.RPI {
+  /* background-color: #fc5c65; */
+    background-color: #ecbfbf;
+}
+.DELL {
+  /* background-color: #45aaf2; */
+    background-color: #d3edf9;
 }
