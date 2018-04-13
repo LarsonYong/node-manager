@@ -18,24 +18,24 @@ class Home extends React.Component {
         const {user, users} = this.props;
         return (
             <div className=" content-container   margT">
-                <div class="welcome-area">
-                  <h1 class="welcome ">WELCOME ON DASHBOARD</h1>
-                  <img class="welcome-icon" src={require('../_assets/Icons/pin.png')}></img>
+                <div className="welcome-area">
+                  <h1 className="welcome ">WELCOME ON DASHBOARD</h1>
+                  <img className="welcome-icon" src={require('../_assets/Icons/pin.png')}></img>
                 </div>
-                <div class="content">
-                  <div class="weather white">
+                <div className="content">
+                  <div className="weather white">
                     <Weather />
                   </div>
-                  <div class="col-6 white">
+                  <div className="col-6 white">
                       <Todo />
                   </div>
-                  <div class="col-6 white">
-                    <div class="other">
+                  <div className="col-6 white">
+                    <div className="other">
                     <div >Hi {user}!</div>
                     <p>You're logged in with React & JWT!!</p>
                     <h3>Users from secure api end point:</h3>
                       {users.loading && <em>Loading users...</em>}
-                      {users.error && <span className="text-danger">ERROR: {users.error}</span>}
+                      {users.error && <span classNameName="text-danger">ERROR: {users.error}</span>}
                       {users.items &&
                         <ul>
                           {users.items.map((user, index) =>
@@ -52,8 +52,8 @@ class Home extends React.Component {
                     </div>
 
                     </div>
-                    <div class="shotcut white col-6">
-                    <div class="template1">Shotcut area</div>
+                    <div className="shotcut white col-6">
+                    <div className="template1">Shotcut area</div>
                     </div>
                 </div>
             </div>

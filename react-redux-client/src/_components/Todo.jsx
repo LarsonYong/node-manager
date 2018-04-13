@@ -13,26 +13,26 @@ class Todo extends React.Component {
     return (
         <div id="Todo">
 
-          <div class="glass">
-          <div class="glass-title"><h3>My todo list: </h3></div>
-          <Table striped bordered condensed hover class="todoT">
+          <div className="glass">
+          <div className="glass-title"><h3>My todo list: </h3></div>
+          <Table striped bordered condensed hover className="todoT">
             <tbody>
             <tr>
               <td>1</td>
               <td>Someting to do
-              <button type="button" class="btn btn-sm btn-success right">Done</button></td>
+              <button type="button" className="btn btn-sm btn-success right">Done</button></td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Someting to do<button type="button" class="btn btn-sm btn-success right">Done</button></td>
+              <td>Someting to do<button type="button" className="btn btn-sm btn-success right">Done</button></td>
             </tr>
             <tr>
               <td>3</td>
-              <td>Someting to do<button type="button" class="btn btn-sm btn-success right">Done</button></td>
+              <td>Someting to do<button type="button" className="btn btn-sm btn-success right">Done</button></td>
             </tr>
             <tr>
               <td>4</td>
-              <td>Someting to do<button type="button" class="btn btn-sm  btn-success right">Done</button></td>
+              <td>Someting to do<button type="button" className="btn btn-sm  btn-success right">Done</button></td>
             </tr>
             </tbody>
           </Table>

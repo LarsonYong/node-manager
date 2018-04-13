@@ -8,12 +8,12 @@ class NodeCard extends React.Component {
 
   render() {
      return (
-       <div class='card'>
-        <div class='card-body clearfix'>
-          <div class="card-body-left" class={this.prop.Platform}>
+       <div className='card'>
+        <div className='card-body clearfix'>
+          <div className="card-body-left" className={this.prop.Platform}>
             <h2> {this.prop.Platform} </h2>
           </div>
-          <div class="card-body-right">
+          <div className="card-body-right">
             <h2> {this.props.UnitID}</h2>
             <p> {this.props.IP_address}</p>
             <p> {this.props.PrimaryInterface}</p>

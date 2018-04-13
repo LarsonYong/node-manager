@@ -12,10 +12,10 @@ class TopBar extends React.Component {
       render() {
         return (
           <div id="top-nav">
-            <ul class="top-ul">
-              <img class="top-logo" src={require('../_assets/Icons/logo-icon.png')}></img>
-              <li class="top-logout "><Link to="/login">Logout</Link></li>
-              <li class="top-user ">Hi  {this.props.name} </li>
+            <ul className="top-ul">
+              <img className="top-logo" src={require('../_assets/Icons/logo-icon.png')}></img>
+              <li className="top-logout "><Link to="/login">Logout</Link></li>
+              <li className="top-user ">Hi  {this.props.name} </li>
             </ul>
           </div>
         )
