@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC');
+:focus { outline: none; }
 .content-container {
   width: 78%;
   margin-left: 11%;
@@ -17,7 +18,6 @@
 .card-area{
   margin: 0 20px 20px 30px;
   padding-top: 20px;
-
 }
 .dispT{
   margin-top: 20px;
@@ -33,6 +33,24 @@
   height:168px;
   cursor: pointer;
 }
+.card-detail {
+  width: 77.9%;
+  /* width: 50%; */
+  height:750px;
+  position: absolute;
+  top: 183px;
+  left:10.9%;
+  transition: all 0.5s ease;
+  opacity: 1;
+  z-index: 10;
+  opacity:1;
+  background-color: white;
+  border-radius: 5px;
+}
+.card-detail:hover {
+  opacity: 1;
+}
+
 .card::after {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   opacity: 0;
@@ -73,8 +91,22 @@
   width: 50%;
   padding-top: 13%;
   float: left;
-  height: 168px;
+  height: 170px;
   background-color: #43c37f;
+}
+.card-detail-body-left {
+  width: 15%;
+  padding-top: 20%;
+  float: left;
+  height: 750px;
+  background-color: #43c37f;
+  border-radius: 5px;
+}
+.detail-left-h2 {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  padding-left: 25%;
+  font-size: 50px;
+  font-weight: bold;
 }
 .card-body-left h2 {
   padding-left: 40px;

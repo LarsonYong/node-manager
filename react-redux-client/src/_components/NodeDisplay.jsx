@@ -14,6 +14,7 @@ class NodeDisplay extends React.Component {
   constructor(props){
     super(props);
     this.onItemClick = this.onItemClick.bind(this);
+    this.cancleDetailCard = this.cancleDetailCard.bind(this);
   }
 
   componentDidMount() {
@@ -22,13 +23,35 @@ class NodeDisplay extends React.Component {
   }
 
 
-
   onItemClick(data) {
+    const targett = document.getElementById(data);
+    const children = targett.children[0].children;
+    const CardLeft = children[0];
+    const CardLeftH2 = CardLeft.children[0];
+    targett.classList.remove('card');
+    // if (targett.classList.contains('card')){
+    //
+    // }else {
+    //   targett.classList.add('card');
+    // }
+    targett.classList.add('card-detail')
+    CardLeft.classList.remove('card-body-left');
+    CardLeft.classList.add('card-detail-body-left');
+    CardLeftH2.classList.add('detail-left-h2')
+  }
 
-    console.log(this.refs);
-    const array = this.refs.data
-    console.log(array)
-
+  cancleDetailCard(data, e){
+    console.log("222")
+    console.log(e.currentTarget);
+    const targett = document.getElementById(data);
+    const children = targett.children[0].children;
+    const CardLeft = children[0];
+    const CardLeftH2 = CardLeft.children[0];
+    targett.classList.add('card');
+    targett.classList.remove('card-detail')
+    CardLeft.classList.add('card-body-left');
+    CardLeft.classList.remove('card-detail-body-left');
+    CardLeftH2.classList.remove('detail-left-h2')
   }
 
   render () {
@@ -40,7 +63,7 @@ class NodeDisplay extends React.Component {
           {nodes.error && <span className="text-danger">ERROR: {nodes.error}</span>}
           {nodes.items && <div>{nodes.items.map((node, index) => (
 
-            <div ref={node.UnitID} key={index} onClick={(e) => {this.onItemClick(node.UnitID)}} className='card'>
+            <div id={node.UnitID} tabindex={node.UnitID} ref={node.UnitID} key={index} onClick={(e) => {this.onItemClick(node.UnitID)}}  onBlur={(e) => {this.cancleDetailCard(node.UnitID,e)}} className='card'>
              <div className='card-body clearfix'>
                <div  className={"card-body-left " + node.Hardware.Platform } >
                  <h2> {node.Hardware.Platform} </h2>
@@ -61,6 +84,8 @@ class NodeDisplay extends React.Component {
 
 
 
+
+
 function mapStateToProps(state) {
     const { nodes } = state;
     return {
@@ -70,27 +95,3 @@ function mapStateToProps(state) {
 
 const connectedNodeDisplay = connect(mapStateToProps)(NodeDisplay);
 export { connectedNodeDisplay as NodeDisplay };
-
-
-// <Table striped bordered condensed hover className="dispT">
-// <thead>
-//   <tr>
-//     <th>Unit ID</th>
-//     <th>IP address</th>
-//     <th>PrimaryInterf</th>
-//     <th>Platform</th>
-//   </tr>
-// </thead>
-//   {nodes.items.map((node, index) => (
-//
-//     <tbody>
-//       <tr>
-//         <td>{node.UnitID}</td>
-//         <td>{node.Software.IP_address}</td>
-//         <td>{node.Software.PrimaryInterface}</td>
-//         <td>{node.Hardware.Platform}</td>
-//       </tr>
-//
-//     </tbody>
-//     ))}
-//     </Table>
