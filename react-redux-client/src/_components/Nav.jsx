@@ -44,7 +44,7 @@ class Nav extends React.Component {
           </div>
           </NavLink>
           <div className="nav-icon-area">
-            <img className="nav-icon" src={require('../_assets/Icons/todo-yellow.png')}></img>
+            <img className="nav-icon" src={require('../_assets/Icons/todo-blue.png')}></img>
             <div className="nav-icon-title">Node Config</div>
           </div>
           <div className="nav-icon-area">
