@@ -12,13 +12,14 @@ import { authActions } from '../_actions';
 import '../_css/Home.css';
 import { userService } from '../_services';
 import { NodeDisplay } from '../_components/NodeDisplay';
+import { NodeConfig } from '../_components/NodeConfig';
 
 var Home = require('../_components/Home')
 var Nav = require('../_components/Nav');
 var TopBar = require('../_components/TopBar');
 var Weather = require('../_components/Weather');
 var Todo = require('../_components/Todo');
-// var NodeDisplay = require('../_components/NodeDisplay');
+
 
 class HomePage extends React.Component {
     componentDidMount() {
@@ -40,18 +41,26 @@ class HomePage extends React.Component {
               <Nav />
               <Switch>
                 <Route path="/home" render={() => <Home user={this.props.user} users={this.props.users} />}/>
-                <Route path="/node" render={function(){
-                  history.pushState(null, '/node');
+                <Route exact path="/node" render={function(){
+
                   return <NodeDisplay />
+                }} />
+
+                <Route exact path="/config" render={function(){
+                  return <NodeConfig />
+                }} />
+                <Route exact path="/config:id" render={function(){
+
+                  return <NodeConfig />
                 }} />
                 <Route path="/login" render={function() {
                   location.href='/login'
                 }} />
                 <Route path='/*' render={function () {
-                  return <div class="container"><p>Not Found</p></div>
+                  return <div className="container"><p>Not Found</p></div>
                 }} />
                 <Route render={function () {
-                  return <div class="container"><p>Not Found</p></div>
+                  return <div className="container"><p>Not Found</p></div>
                 }} />
               </Switch>
             </div>
@@ -77,3 +86,5 @@ export { connectedHomePage as HomePage };
 // <Route path="/node" render={() => <NodeDisplay />}/>
 // <Route path='/:spec' component={Spec} />
 // const {spec} = this.props.params
+
+// history.pushState(null, '/node');

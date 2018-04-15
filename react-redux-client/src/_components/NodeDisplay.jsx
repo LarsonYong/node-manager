@@ -49,7 +49,7 @@ class NodeDisplay extends React.Component {
     })
   }
 
-  cancleDetailCard(data, e){
+  cancleDetailCard(data){
     this.setState({
       selectedNode: ''
     });
@@ -75,12 +75,12 @@ class NodeDisplay extends React.Component {
     const { nodes } = this.props;
     return (
       <div className="content-container marr margT">
-          <div className="card-area">
+          <div id="card-area" className="card-area">
           {nodes.loading &&<em>Loading nodes...</em>}
           {nodes.error && <span className="text-danger">ERROR: {nodes.error}</span>}
           {nodes.items && <div>{nodes.items.map((node, index) => (
 
-            <div id={node.UnitID} tabIndex={node.UnitID} ref={node.UnitID} key={index} onClick={(e) => {this.onItemClick(node.UnitID)}} onBlur={(e) => {this.cancleDetailCard(node.UnitID,e)}}  className='card'>
+            <div id={node.UnitID} tabIndex={node.UnitID} ref={node.UnitID} key={index} onClick={() => this.onItemClick(node.UnitID)} onBlur={() => this.cancleDetailCard(node.UnitID)}  className='card'>
              <div className='card-body clearfix'>
                <div  className={"card-body-left " + node.Hardware.Platform } >
                  <h2> {node.Hardware.Platform} </h2>

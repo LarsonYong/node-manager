@@ -20,13 +20,29 @@
   height: 10%;
   margin-top: 20px;
 }
-.detail-title p {
-  font-family: 'Lato', sans-serif;
+.detail-title-content {
+  width: 70%;
+  float: left;
 }
-.detail-title h1 {
+.detail-title-content p {
+  font-family: 'Lato', sans-serif;
+
+}
+.detail-title-content h1 {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   margin-top: 0;
+}
+.detail-title-button {
+  float: left;
+  width: 15%;
+  height: 40px;
+  margin-top: 15px;
+  margin-left: 6%;
+}
+.detail-title-button button {
+  height: 100%;
+  width: 70%;
 }
 .params {
   margin-left: 20px;

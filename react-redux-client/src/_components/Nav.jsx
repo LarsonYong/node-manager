@@ -19,11 +19,22 @@ class Nav extends React.Component {
       case 'home':
         ReactDOM.findDOMNode(this.refs.home).classList.add('selected')
         ReactDOM.findDOMNode(this.refs.node).classList.remove('selected')
+        ReactDOM.findDOMNode(this.refs.config).classList.remove('selected')
         break;
       case 'node':
         ReactDOM.findDOMNode(this.refs.home).classList.remove('selected')
+        ReactDOM.findDOMNode(this.refs.config).classList.remove('selected')
         ReactDOM.findDOMNode(this.refs.node).classList.add('selected')
         break;
+      case 'config':
+        ReactDOM.findDOMNode(this.refs.home).classList.remove('selected')
+        ReactDOM.findDOMNode(this.refs.node).classList.remove('selected')
+        ReactDOM.findDOMNode(this.refs.config).classList.add('selected')
+      case (url.match(/config[0-9]+/) || {}).input:
+
+        ReactDOM.findDOMNode(this.refs.home).classList.remove('selected')
+        ReactDOM.findDOMNode(this.refs.node).classList.remove('selected')
+        ReactDOM.findDOMNode(this.refs.config).classList.add('selected')
       }
   }
   render(){
@@ -43,10 +54,12 @@ class Nav extends React.Component {
             <div className="nav-icon-title">Node Monitor</div>
           </div>
           </NavLink>
-          <div className="nav-icon-area">
+          <NavLink to="/config">
+          <div ref="config" className="nav-icon-area">
             <img className="nav-icon" src={require('../_assets/Icons/todo-blue.png')}></img>
             <div className="nav-icon-title">Node Config</div>
           </div>
+          </NavLink>
           <div className="nav-icon-area">
             <img className="nav-icon" src={require('../_assets/Icons/user-red.png')}></img>
             <div className="nav-icon-title">User Admin</div>

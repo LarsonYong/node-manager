@@ -1,19 +1,32 @@
 import React, {Component} from 'react';
 import '../_css/NodeDetialCard.css'
+import Button from 'react-bootstrap/lib/Button';
+import { history } from '../_helpers';
 
 class NodeDetialCard extends React.Component {
   constructor(props) {
     super(props);
+    this.configNode = this.configNode.bind(this);
+  }
+
+  configNode(data) {
+    const path = 'config' + data;
+    document.getElementById('card-area').style.display = "none";
+    window.location='config' + data;
   }
 
   render () {
     const selectedUnitID = this.props.selectedNode
     return (
-        <div className="node-detail-area">
-          <div className="detail-title">
-            <h1>{this.props.node.UnitID}</h1>
-            <p>{this.props.node.Software.BuildVersion}</p>
-          </div>
+        <div className="node-detail-area clearfix">
+          <div className="detail-title clearfix">
+            <div className="detail-title-content">
+              <h1>{this.props.node.UnitID}</h1>
+              <p>{this.props.node.Software.BuildVersion}</p>
+            </div>
+            <div className="detail-title-button">
+              <Button type="button" onMouseDown={() => this.configNode(this.props.node.UnitID)} className="btn btn-sm btn-success">Edite</Button></div>
+            </div>
           <div className="params clearfix">
             <div className="col">
               <div className="detail-card">
