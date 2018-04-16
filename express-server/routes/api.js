@@ -41,10 +41,11 @@ router.route('/token')
 router.route('/node/')
     .get(nodeController.getNodes)
     .post(nodeController.addNode)
-    .put(nodeController.updateNode);
+
 
 router.route('/node/id/:id')
       .get(nodeController.getNode)
-      .delete(nodeController.deleteNode);
+      .delete(nodeController.deleteNode)
+      .post(nodeController.updateNode);
 
 export default router;

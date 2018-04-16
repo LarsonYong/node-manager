@@ -1,12 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
 .content-container {
   width: 78%;
   margin-left: 11%;
   background-color: white;
-  /*border-radius: 3px;*/
-  /*box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);*/
   height: 750px;
 }
-.marT {
-
-  /*margin-top:  -43px;*/
+.dropdown {
+  margin-top: 20px;
+  margin-left: 45px;
+}
+.dropdown-menu li {
+  width: 100%;
+}
+.noPaddTop {
+  padding-top: 0;
+}
+.col-4 {
+  float: left;
+  width: 20%;
+  padding-left: 15px;
+  paddding-right: 15px;
+  margin-left: 10px;
+  margin-right: 60px;
+}
+.col-4 h2{
+  font-weight: bold;
+}
+.submit-btn {
+  float: right;
+  margin-top: 38%;
+}
+.NodeForm{
+  margin-left: 20px;
+}
+.margT {
+  margin-top: 40px;
+}
+* {
+  font-family: 'Lato', sans-serif;
 }

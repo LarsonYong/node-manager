@@ -2,7 +2,8 @@ import { authHeader } from '../_helpers'
 import { browserHistory } from 'react-router';
 
 export const nodeService = {
-  getAll
+  getAll,
+  getNode
 };
 
 function getAll() {
@@ -21,5 +22,25 @@ function getAll() {
               return Promise.reject(json.message)
             }
             return json.nodes;
+          })
+}
+
+function getNode(data) {
+  const headers = authHeader()
+  const requestOptions = {
+    method: 'POST',
+    headers: headers
+  };
+  const url = 'http://localhost:4001/api/node/id/' + data
+  return fetch(url, requestOptions)
+          .then(resp => resp.json())
+          .then(json => {
+            if (!json.auth){
+              if (json.err && json.err.message === 'jwt expired') {
+                browserHistory.replace('/login');
+              }
+              return Promise.reject(json.message)
+            }
+            return json;
           })
 }

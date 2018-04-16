@@ -66,6 +66,22 @@ export const updateNode = (req,res) => {
   jwt.verify(token, config.secret, function (err, decoded) {
     if (err) {
       return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
+    }else{
+      var unit_id = req.params.id
+      console.log(unit_id);
+      Node.find({"UnitID":req.params.id}, function(err,data) {
+        if (data.length !== 1){
+          return res.status(404).send({auth: true, message:"No suck node",err})
+        }else{
+          Node.findOneAndUpdate({"UnitID":req.params.id}, {$set:req.body},{new: true}, function(err,result){
+            if (err){
+              return res.status(500).send({auth:true, message:err})
+            }else {
+              return res.status(202).send({auth:true, message:"Node updated",node:result})
+            }
+          })
+        }
+      })
     }
 
   })
