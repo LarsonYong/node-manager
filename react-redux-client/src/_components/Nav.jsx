@@ -44,24 +44,24 @@ class Nav extends React.Component {
         <div className="nav-icons">
           <NavLink to="/home" >
           <div ref="home" className="nav-icon-area selected" >
-            <img className="nav-icon" src={require('../_assets/Icons/dash-blue.png')}></img>
+            <img className="nav-icon" src={require('../_assets/Icons/home.png')}></img>
             <div className="nav-icon-title">Dashboard</div>
           </div>
           </NavLink>
           <NavLink to="/node">
           <div ref="node" className="nav-icon-area" >
-            <img className="nav-icon" src={require('../_assets/Icons/node-green.png')}></img>
+            <img className="nav-icon" src={require('../_assets/Icons/monitor.png')}></img>
             <div className="nav-icon-title">Node Monitor</div>
           </div>
           </NavLink>
           <NavLink to="/config">
           <div ref="config" className="nav-icon-area">
-            <img className="nav-icon" src={require('../_assets/Icons/todo-blue.png')}></img>
+            <img className="nav-icon" src={require('../_assets/Icons/config.png')}></img>
             <div className="nav-icon-title">Node Config</div>
           </div>
           </NavLink>
           <div className="nav-icon-area">
-            <img className="nav-icon" src={require('../_assets/Icons/user-red.png')}></img>
+            <img className="nav-icon" src={require('../_assets/Icons/user.png')}></img>
             <div className="nav-icon-title">User Admin</div>
           </div>
         </div>

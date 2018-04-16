@@ -75,7 +75,7 @@ class NodeDisplay extends React.Component {
     const { nodes } = this.props;
     return (
       <div className="content-container marr margT">
-          <div id="card-area" className="card-area">
+          <div id="card-area" className="card-area clearfix">
           {nodes.loading &&<em>Loading nodes...</em>}
           {nodes.error && <span className="text-danger">ERROR: {nodes.error}</span>}
           {nodes.items && <div>{nodes.items.map((node, index) => (

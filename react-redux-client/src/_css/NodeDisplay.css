@@ -4,20 +4,19 @@
   width: 78%;
   margin-left: 11%;
   background-color: white;
-  border-radius: 3px;
+  /*border-radius: 3px;*/
   /* box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4); */
   height: 750px;
   /* background-image:url(../_assets/blur_3.png);
   background-position: -130px 53%;; */
 }
 
-.marr {
-
-  margin-top:  -63px;
+.margT {
+  /*margin-top:  -43px;*/
 }
 .card-area{
   margin: 0 20px 20px 30px;
-  padding-top: 20px;
+  padding-top: 25px;
 }
 .dispT{
   margin-top: 20px;
@@ -26,7 +25,7 @@
   width: 320px;
   float: left;
   margin: 15px 10px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 	box-shadow: 0 0.5px 1px #777;
@@ -38,14 +37,14 @@
   /* width: 50%; */
   height:750px;
   position: absolute;
-  top: 183px;
+  top: 177px;
   left:10.9%;
   transition: all 0.9s ease;
   opacity: 1;
   z-index: 10;
   opacity:1;
   background-color: white;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 .card-detail:hover {
   opacity: 1;
@@ -56,23 +55,23 @@
   opacity: 0;
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 .card:hover{
   box-shadow: 0 2px 2px #777;
   -webkit-transform: scale(1.15, 1.15);
   transform: scale(1.15, 1.15);
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 .card:hover::after {
   opacity: 1;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 .card-title {
   margin: 5px 5px;
 }
 .card-body {
-  height: 750px;
+  height: 170px;
 
 }
 .unitID {
@@ -91,16 +90,16 @@
   width: 50%;
   padding-top: 13%;
   float: left;
-  height: 170px;
+  height: 168px;
   background-color: #43c37f;
 }
 .card-detail-body-left {
-  width: 15%;
+  width: 14.5%;
   padding-top: 20%;
   float: left;
   height: 750px;
   background-color: #43c37f;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 .detail-left-h2 {
   font-family: 'Alegreya Sans SC', sans-serif;
@@ -134,7 +133,7 @@
 .card-detail-body-right {
   width: 85%;
   height: 750px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   margin-right: 20px;
   margin-left: 15%;
   /*margin-top: -20px;*/

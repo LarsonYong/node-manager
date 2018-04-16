@@ -3,7 +3,7 @@ ul {
 }
 #Nav {
   background-color: #404040;
-  height: 190px;
+  height: 120px;
   width: 85%;
   margin-left:7.5%;
 }
@@ -14,13 +14,13 @@ ul {
 }
 .nav-icon-area {
   display: inline;
-  margin-top: 10px;
+  margin-top: 5px;
   height: 100px;
   width: 110px;
   float: left;
   margin-right: 10px;
   margin-left: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .nav-icon-area:hover {
   background-color: #555555;
@@ -52,9 +52,9 @@ ul {
    margin: 0 auto;
    width: 0;
    height: 0;
-   border-top: solid 15px #555555;
-   border-left: solid 10px transparent;
-   border-right: solid 10px transparent;
+   border-top: solid 5px #fff;
+   border-left: solid 56px #fff;
+   border-right: solid 56px #fff;
 }
 .right {
   float: right;

@@ -6,11 +6,9 @@
 }
 .detail-card {
   float: left;
-  width: 300px;
-  /*height: 220px;*/
-  /*border: 1px solid black;*/
-  margin: 20px 20px;
-
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 .detail-card h2 {
   font-family: 'Lato', sans-serif;
@@ -46,16 +44,36 @@
 }
 .params {
   margin-left: 20px;
+  margin-top: 30px;
 }
-.detail-card div {
+.detail-line div {
   font-family: 'Lato', sans-serif;
+  width: 38%;
+  float: left;
+}
+.detail-line p {
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+  width: 48%;
+  float: left;
+  margin-left:10px;
 }
 .col {
   float: left;
-  width: 30%;
+  width: 32%;
+  padding-top: 40px;
 }
-.ssd {
-  margin-top: -10px;
+.test {
+  height: 200px
+}
+.test-d div {
+  width: 20%;
+}
+.what-test {
+  height: 100px;
+}
+.what-test p{
+  height: 80px;
 }
 .ssd h2 {
   margin-top: 20px;

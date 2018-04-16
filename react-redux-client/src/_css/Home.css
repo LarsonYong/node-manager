@@ -1,37 +1,18 @@
 .margT {
-  margin-top: -63px;
+  /*margin-top: -43px;*/
   z-index: 10;
 }
 #home {
   background-color: white!important;
 }
-.blurred-box{
-  position: relative;
-  width: 74%;
-  height: 100%;
-  background: inherit;
-  border-radius: 2px;
-  overflow: hidden;
-  /* background-image: url((http://i.stack.imgur.com/l8bXw.jpg); */
-}
 
-.blurred-box:after{
- content: '';
- width: 75%;
- margin-left: 12%;
- height: 800px;
- background: inherit;
- position: absolute;
- box-shadow: inset 0 0 0 200px rgba(255,255,255,0.91);
- filter: blur(10px);
-}
 
 .content-container {
   width: 78%;
   margin-left: 11%;
   background-color: white;
-  border-radius: 3px;
-  box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+  /*border-radius: 3px;*/
+  /*box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);*/
   height: 750px;
   /* background-image:url(../_assets/blur_3.png);
   background-position: -130px 53%;; */
@@ -66,7 +47,7 @@
 }
 .welcome {
   margin-top:0;
-  padding-top: 15px;
+  padding-top: 10px;
   padding-left: 5%;
   color: #8c8181;
   width: 80%;
@@ -88,7 +69,7 @@
   height: 34px;
   float: right;
   margin-right: 5%;
-  margin-top: 15px;
+  margin-top: 10px;
 
 }
 .outline {

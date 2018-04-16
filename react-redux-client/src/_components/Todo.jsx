@@ -20,19 +20,30 @@ class Todo extends React.Component {
             <tr>
               <td>1</td>
               <td>Someting to do
-              <button type="button" className="btn btn-sm btn-success right">Done</button></td>
+                <button type="button" className="btn btn-sm btn-success right">Done</button>
+                <button type="button" className="btn btn-sm btn-default right">Modify</button>
+              </td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Someting to do<button type="button" className="btn btn-sm btn-success right">Done</button></td>
+              <td>Someting to do
+                <button type="button" className="btn btn-sm btn-success right">Done</button>
+                <button type="button" className="btn btn-sm btn-default right">Modify</button>
+              </td>
             </tr>
             <tr>
               <td>3</td>
-              <td>Someting to do<button type="button" className="btn btn-sm btn-success right">Done</button></td>
+              <td>Someting to do
+                <button type="button" className="btn btn-sm btn-success right">Done</button>
+                <button type="button" className="btn btn-sm btn-default right">Modify</button>
+              </td>
             </tr>
             <tr>
               <td>4</td>
-              <td>Someting to do<button type="button" className="btn btn-sm  btn-success right">Done</button></td>
+              <td>Someting to do
+                <button type="button" className="btn btn-sm  btn-success right">Done</button>
+                <button type="button" className="btn btn-sm btn-default right">Modify</button>
+              </td>
             </tr>
             </tbody>
           </Table>

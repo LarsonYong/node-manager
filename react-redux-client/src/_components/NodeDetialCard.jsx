@@ -31,48 +31,117 @@ class NodeDetialCard extends React.Component {
             <div className="col">
               <div className="detail-card">
                 <h2 >Software</h2>
-                <pre >Primary Interface:   {this.props.node.Software.PrimaryInterface}</pre>
-                <pre>IP address:   {this.props.node.Software.IP_address}</pre>
-                <pre>BackDoor IP:   {this.props.node.Software.BackDoor_IP}</pre>
-                <pre>Sensor Board Version:   {this.props.node.Software.SensorBoardVersion}</pre>
-                <pre>AP:   {this.props.node.Software.AP}</pre>
+                <div className='detail-line clearfix'>
+                  <div >Primary Interface: </div>
+                   <p> {this.props.node.Software.PrimaryInterface}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>IP address:  </div>
+                  <p> {this.props.node.Software.IP_address}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>BackDoor IP:  </div>
+                  <p> {this.props.node.Software.BackDoor_IP}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>AP:  </div>
+                  <p> {this.props.node.Software.AP}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>Sensor Board Version:  </div>
+                  <p> {this.props.node.Software.SensorBoardVersion}</p>
+                </div>
               </div>
               <div className="detail-card">
                 <h2 >Camera</h2>
-                <pre>manufacturer:   {this.props.node.Hardware.Camera.manufacturer}</pre>
-                <pre>Type:   {this.props.node.Hardware.Camera.Type}</pre>
-                <pre>Lens:   {this.props.node.Hardware.Camera.lens}</pre>
+                <div className='detail-line clearfix'>
+                  <div>Manufacturer:   </div>
+                  <p>{this.props.node.Hardware.Camera.manufacturer}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>Type:   </div>
+                  <p>{this.props.node.Hardware.Camera.Type}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>Lens: </div>
+                  <p>  {this.props.node.Hardware.Camera.lens}</p>
+                </div>
               </div>
             </div>
             <div className="col">
               <div className="detail-card">
                 <h2 >Hardware</h2>
-                <pre>UPS:   {this.props.node.Hardware.UPS}</pre>
-                <pre>Sensor Board:   {this.props.node.Hardware.SensorBoard}</pre>
-                <pre>Platform:   {this.props.node.Hardware.Platform}</pre>
-                <pre>WIFI Module:   {this.props.node.Hardware.WIFIModule}</pre>
-                <pre>4G Module:   {this.props.node.Hardware.FourGModule}</pre>
-                <pre>Reset board:   {this.props.node.Hardware.ResetBoard}</pre>
+                <div className='detail-line clearfix'>
+                  <div>Platform:   </div>
+                  <p>{this.props.node.Hardware.Platform}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>UPS:  </div>
+                  <p> {this.props.node.Hardware.UPS}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>Sensor Board:   </div>
+                  <p>{this.props.node.Hardware.SensorBoard}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>WIFI Module:   </div>
+                  <p>{this.props.node.Hardware.WIFIModule}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>4G Module:  </div>
+                  <p> {this.props.node.Hardware.FourGModule}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>Reset board:   </div>
+                  <p>{this.props.node.Hardware.ResetBoard}</p>
+                </div>
               </div>
               <div className="detail-card ssd">
                 <h2 >SSD</h2>
-                <pre>manufacturer:   {this.props.node.Hardware.SSD.manufacturer}</pre>
-                <pre>Type:   {this.props.node.Hardware.SSD.Type}</pre>
-                <pre>Capacity:   {this.props.node.Hardware.SSD.Capacity}</pre>
+                <div className='detail-line clearfix'>
+                  <div>Manufacturer:   </div>
+                  <p>{this.props.node.Hardware.SSD.manufacturer}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>Type:   </div>
+                  <p>{this.props.node.Hardware.SSD.Type}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>Capacity:   </div>
+                  <p>{this.props.node.Hardware.SSD.Capacity}</p>
+                </div>
               </div>
             </div>
             <div className="col">
-              <div className="detail-card">
+              <div className="detail-card test">
                 <h2 >Test</h2>
-                <pre>Who: {this.props.node.Test.Who}</pre>
-                <pre>What: {this.props.node.Test.What}</pre>
-                <pre>When: {this.props.node.Test.When}</pre>
+                <div className='detail-line clearfix test-d'>
+                  <div>Who: </div>
+                  <p>{this.props.node.Test.Who}</p>
+                </div>
+                <div className='detail-line clearfix test-d what-test'>
+                  <div>What: </div>
+                  <p>{this.props.node.Test.What}</p>
+                </div>
+                <div className='detail-line clearfix test-d'>
+                  <div>When: </div>
+                  <p>{this.props.node.Test.When}</p>
+                </div>
               </div>
               <div className="detail-card">
                 <h2  >SIM</h2>
-                <pre>Carrier:   {this.props.node.Hardware.SIM.Carrier}</pre>
-                <pre>APN:   {this.props.node.Hardware.SIM.APN}</pre>
-                <pre>IP address:   {this.props.node.Hardware.SIM.IP_address}</pre>
+                <div className='detail-line clearfix'>
+                  <div>Carrier:   </div>
+                  <p>{this.props.node.Hardware.SIM.Carrier}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>APN:   </div>
+                  <p>{this.props.node.Hardware.SIM.APN}</p>
+                </div>
+                <div className='detail-line clearfix'>
+                  <div>IP address:   </div>
+                  <p>{this.props.node.Hardware.SIM.IP_address}</p>
+                </div>
               </div>
             </div>
 
