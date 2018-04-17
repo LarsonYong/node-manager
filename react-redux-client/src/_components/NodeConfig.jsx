@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../_css/NodeConfig.css'
-import { SplitButton, MenuItem,FormGroup,FormControl, ControlLabel   } from 'react-bootstrap';
+import { SplitButton, MenuItem,FormGroup,FormControl, ControlLabel, Form   } from 'react-bootstrap';
 import Button from 'react-bootstrap/lib/Button';
 import { history } from '../_helpers';
 import { BrowserRouter } from "react-router-dom";
@@ -16,6 +16,9 @@ class NodeConfig extends React.Component {
     userService.verifyToken1();
     this.props.dispatch(nodeActions.getAll());
     this.clickedUnitID = this.clickedUnitID.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.getDefalutvalue = this.getDefalutvalue.bind(this);
     this.state = {
       selectedID: 'Unit ID',
       selectedNode: '',
@@ -43,6 +46,19 @@ class NodeConfig extends React.Component {
     }
   }
 
+  getDefalutvalue(data){
+    return document.getElementById(data).defaultValue
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.defaultValue});
+  }
+
+  handleSubmit(event) {
+    alert(this.getDefalutvalue('BuildVersion'));
+    event.preventDefault();
+  }
+
   clickedUnitID(data, node) {
     this.setState({
       selectedID:'Unit ID:' + data,
@@ -56,7 +72,6 @@ class NodeConfig extends React.Component {
 
   render() {
     const { nodes } = this.props;
-    console.log(this.props)
     return(
       <div className="content-container marT">
         <SplitButton
@@ -72,13 +87,14 @@ class NodeConfig extends React.Component {
         ))}
         </SplitButton>
         {this.state.selected &&
+          <form onSubmit={this.handleSubmit}>
           <FormGroup className="NodeForm margT">
             <div className='col-4 noPaddTop'>
               <h2>Software</h2>
               <ControlLabel >Build Version: </ControlLabel>
-              <FormControl componentClass="textarea" defaultValue={this.state.selectedNode.Software.BuildVersion}></FormControl>
+              <FormControl id="BuildVersion" componentClass="textarea" defaultValue={this.state.selectedNode.Software.BuildVersion}></FormControl>
               <ControlLabel>Primary Interface: </ControlLabel>
-              <FormControl inline="true" defaultValue={this.state.selectedNode.Software.PrimaryInterface}></FormControl>
+              <FormControl onChange={this.handleChange} defaultValue={this.state.selectedNode.Software.PrimaryInterface}></FormControl>
               <ControlLabel>IP address:</ControlLabel>
               <FormControl defaultValue={this.state.selectedNode.Software.IP_address}></FormControl>
               <ControlLabel>BackDoor IP:</ControlLabel>
@@ -87,10 +103,7 @@ class NodeConfig extends React.Component {
               <FormControl defaultValue={this.state.selectedNode.Software.AP}></FormControl>
               <ControlLabel>Sensor Board Version:</ControlLabel>
               <FormControl defaultValue={this.state.selectedNode.Software.SensorBoardVersion}></FormControl>
-
             </div>
-
-
             <div className='col-4 noPaddTop'>
               <h2>SSD</h2>
               <ControlLabel>Manufacturer:</ControlLabel>
@@ -127,7 +140,7 @@ class NodeConfig extends React.Component {
             <div className='col-4 '>
               <h2>Hardware</h2>
               <ControlLabel>Platform:  </ControlLabel>
-              <FormControl inline="true" defaultValue={this.state.selectedNode.Hardware.Platform}></FormControl>
+              <FormControl defaultValue={this.state.selectedNode.Hardware.Platform}></FormControl>
               <ControlLabel>UPS: </ControlLabel>
               <FormControl defaultValue={this.state.selectedNode.Hardware.UPS}></FormControl>
               <ControlLabel>ensor Board:  </ControlLabel>
@@ -139,11 +152,12 @@ class NodeConfig extends React.Component {
               <ControlLabel>Reset board:</ControlLabel>
               <FormControl defaultValue={this.state.selectedNode.Hardware.ResetBoard}></FormControl>
               <div className="submit-btn">
-                <Button type="button" className="btn btn-success">UPDATE NODE</Button>
+                <Button type="submit"  onClick={(e) => {this.handleClearForm}} className="btn btn-success">UPDATE NODE</Button>
               </div>
             </div>
 
-          </FormGroup>}
+          </FormGroup>
+        </form>}
       </div>
     )
   }
