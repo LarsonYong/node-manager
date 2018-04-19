@@ -16,13 +16,29 @@ class NodeConfig extends React.Component {
     userService.verifyToken1();
     this.props.dispatch(nodeActions.getAll());
     this.clickedUnitID = this.clickedUnitID.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSoftwareChange = this.handleSoftwareChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getDefalutvalue = this.getDefalutvalue.bind(this);
     this.state = {
       selectedID: 'Unit ID',
       selectedNode: '',
-      selected: false
+      selected: false,
+      BuildVersion:'',
+      PrimaryInterface:'',
+      IP_address:'',
+      updateNode: {
+        Software:{
+          'BuildVersion':'',
+          'PrimaryInterface':'',
+          'IP_address':''
+        },
+        Hardware:{
+
+        },
+        Test:{
+
+        }
+      }
     };
     const pathname = document.location.pathname
     const lastDigit = pathname.substr(pathname.length -1)
@@ -50,12 +66,14 @@ class NodeConfig extends React.Component {
     return document.getElementById(data).defaultValue
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.defaultValue});
+  handleSoftwareChange(event) {
+    const title = event.target.id
+    this.setState({[title]: event.target.value});
+    console.log(this.state)
   }
 
   handleSubmit(event) {
-    alert(this.getDefalutvalue('BuildVersion'));
+    console.log(this.state)
     event.preventDefault();
   }
 
@@ -92,17 +110,17 @@ class NodeConfig extends React.Component {
             <div className='col-4 noPaddTop'>
               <h2>Software</h2>
               <ControlLabel >Build Version: </ControlLabel>
-              <FormControl id="BuildVersion" componentClass="textarea" defaultValue={this.state.selectedNode.Software.BuildVersion}></FormControl>
+              <FormControl id="BuildVersion" componentClass="textarea" onChange={this.handleSoftwareChange} defaultValue={this.state.selectedNode.Software.BuildVersion}></FormControl>
               <ControlLabel>Primary Interface: </ControlLabel>
-              <FormControl onChange={this.handleChange} defaultValue={this.state.selectedNode.Software.PrimaryInterface}></FormControl>
+              <FormControl id="PrimaryInterface" onChange={this.handleSoftwareChange} defaultValue={this.state.selectedNode.Software.PrimaryInterface}></FormControl>
               <ControlLabel>IP address:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Software.IP_address}></FormControl>
+              <FormControl id="IP_address" onChange={this.handleSoftwareChange} defaultValue={this.state.selectedNode.Software.IP_address}></FormControl>
               <ControlLabel>BackDoor IP:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Software.BackDoor_IP}></FormControl>
+              <FormControl id="BackDoor_IP" defaultValue={this.state.selectedNode.Software.BackDoor_IP}></FormControl>
               <ControlLabel>AP:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Software.AP}></FormControl>
+              <FormControl id="AP" defaultValue={this.state.selectedNode.Software.AP}></FormControl>
               <ControlLabel>Sensor Board Version:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Software.SensorBoardVersion}></FormControl>
+              <FormControl id="SensorBoardVersion" defaultValue={this.state.selectedNode.Software.SensorBoardVersion}></FormControl>
             </div>
             <div className='col-4 noPaddTop'>
               <h2>SSD</h2>
