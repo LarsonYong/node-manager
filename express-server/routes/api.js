@@ -45,7 +45,7 @@ router.route('/node/')
 
 router.route('/node/id/:id')
       .get(nodeController.getNode)
-      .delete(nodeController.deleteNode)
-      .post(nodeController.updateNode);
+      .post(nodeController.updateNode)
+      .delete(nodeController.deleteNode);
 
 export default router;

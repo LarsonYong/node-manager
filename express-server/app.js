@@ -61,7 +61,7 @@ app.use(session({
 
 // allow-cors
 app.use(function(req,res,next){
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE")
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept,x-access-token, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, *");
   next();
@@ -69,10 +69,16 @@ app.use(function(req,res,next){
 
 // configure app
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended:false }));
 
+
+// app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/*+json' }));
+app.use(bodyParser.urlencoded({extended:false}));
+// app.use(bodyParser.urlencoded({ extended:true }));
 // app.use(bodyParser.json({ type: 'application/json' }));
+// app.use(bodyParser.json({ type: 'application/*+json' }));
+// app.use(bodyParser.json({ type: 'application/json' }));
+// app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 

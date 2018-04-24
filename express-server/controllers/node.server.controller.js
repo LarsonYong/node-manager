@@ -22,7 +22,6 @@ export const getNodes = (req, res) => {
       if (err){
         return res.json({'auth':true, 'message':"Some Error", err})
       }
-      console.log(nodes);
       return res.status(200).send({'auth': true, 'message':'Nodes fetched successfully','decoded': decoded, 'nodes': nodes})
     })
   })
@@ -49,6 +48,7 @@ export const addNode = (req,res) => {
         if (err){
           return res.json({"auth": true, "success":false, "message": err})
         }
+        console.log("Node added")
         res.status(200).send({"auth": true, "success": true, "message": "Node added", node})
       })
     })
@@ -68,16 +68,17 @@ export const updateNode = (req,res) => {
       return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
     }else{
       var unit_id = req.params.id
-      console.log(unit_id);
+
       Node.find({"UnitID":req.params.id}, function(err,data) {
         if (data.length !== 1){
           return res.status(404).send({auth: true, message:"No suck node",err})
         }else{
           Node.findOneAndUpdate({"UnitID":req.params.id}, {$set:req.body},{new: true}, function(err,result){
             if (err){
-              return res.status(500).send({auth:true, message:err})
+              return res.status(500).send({auth:true,success: false, message:err})
             }else {
-              return res.status(202).send({auth:true, message:"Node updated",node:result})
+              console.log("Node updated")
+              return res.status(202).send({auth:true,success:true, message:"Node updated",node:result})
             }
           })
         }
@@ -101,6 +102,7 @@ export const getNode = (req, res ) => {
       if (data.length === 1){
         return res.status(200).send({"auth": true, "success":true, "message": "Node fetched", data})
       }else {
+        console.log("Get node ")
         return res.status(404).send({"auth": true, "success":false,"message":"Can not find this node!"})
       }
     })
@@ -118,9 +120,7 @@ export const deleteNode = (req, res) => {
       return res.status(500).send({auth: false, message: 'Failed to authenticate token.',err})
     }
     Node.find({"UnitID":req.params.id}, function(err, data){
-      console.log(data)
-      console.log(typeof data);
-      console.log(data.length);
+
       if (data.length === 1){
         Node.findOneAndRemove({"UnitID":req.params.id},function(err) {
           console.log("Node removed")

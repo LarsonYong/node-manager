@@ -15,38 +15,30 @@ class NodeConfig extends React.Component {
     super(props);
     userService.verifyToken1();
     this.props.dispatch(nodeActions.getAll());
+
     this.clickedUnitID = this.clickedUnitID.bind(this);
+    this.handleHardwareChange = this.handleHardwareChange.bind(this);
     this.handleSoftwareChange = this.handleSoftwareChange.bind(this);
+    this.handleTestChange = this.handleTestChange.bind(this);
+    this.handleCameraChange = this.handleCameraChange.bind(this);
+    this.handleSSDChange = this.handleSSDChange.bind(this);
+    this.handleSIMChange = this.handleSIMChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getDefalutvalue = this.getDefalutvalue.bind(this);
     this.state = {
       selectedID: 'Unit ID',
       selectedNode: '',
-      selected: false,
-      BuildVersion:'',
-      PrimaryInterface:'',
-      IP_address:'',
-      updateNode: {
-        Software:{
-          'BuildVersion':'',
-          'PrimaryInterface':'',
-          'IP_address':''
-        },
-        Hardware:{
-
-        },
-        Test:{
-
-        }
-      }
+      selected: false
     };
     const pathname = document.location.pathname
     const lastDigit = pathname.substr(pathname.length -1)
     if (lastDigit.match(/[0-9]/)){
       const ID = pathname.substr(7, pathname.length)
       nodeService.getNode(ID).then(result => this.setState({
-        selectedNode: result.node,
+        selectedNode: result.data[0],
         selectedID: 'Unit ID:' + ID,
+        UpdateUnitID: ID,
         selected: true
       }));
     }
@@ -66,15 +58,93 @@ class NodeConfig extends React.Component {
     return document.getElementById(data).defaultValue
   }
 
+  handleHardwareChange(event) {
+    const title = event.target.id
+    const UpdateUnitID = this.state.selectedNode.UnitID
+    let oldValue = this.state.selectedNode;
+    let newValue = this.state.selectedNode;
+    newValue.Hardware[title]=event.target.value
+    this.setState({
+      selectedNode:newValue
+    })
+    this.setState({UpdateUnitID:UpdateUnitID});
+  }
+
   handleSoftwareChange(event) {
     const title = event.target.id
-    this.setState({[title]: event.target.value});
-    console.log(this.state)
+    const UpdateUnitID = this.state.selectedNode.UnitID
+    let oldValue = this.state.selectedNode;
+    let newValue = this.state.selectedNode;
+    newValue.Software[title]=event.target.value
+    this.setState({
+      selectedNode:newValue
+    })
+    this.setState({UpdateUnitID:UpdateUnitID});
+  }
+
+  handleTestChange(event) {
+    const title = event.target.id
+    const UpdateUnitID = this.state.selectedNode.UnitID
+    let oldValue = this.state.selectedNode;
+    let newValue = this.state.selectedNode;
+    newValue.Test[title]=event.target.value
+    this.setState({
+      selectedNode:newValue
+    })
+    this.setState({UpdateUnitID:UpdateUnitID});
+  }
+
+  handleCameraChange(event) {
+    const title = event.target.id
+    const UpdateUnitID = this.state.selectedNode.UnitID
+    let oldValue = this.state.selectedNode;
+    let newValue = this.state.selectedNode;
+    newValue.Hardware.Camera[title]=event.target.value
+    this.setState({
+      selectedNode:newValue
+    })
+    this.setState({UpdateUnitID:UpdateUnitID});
+  }
+
+  handleSSDChange(event) {
+    const title = event.target.id
+    const UpdateUnitID = this.state.selectedNode.UnitID
+    let oldValue = this.state.selectedNode;
+    let newValue = this.state.selectedNode;
+    newValue.Hardware.SSD[title]=event.target.value
+    this.setState({
+      selectedNode:newValue
+    })
+    this.setState({UpdateUnitID:UpdateUnitID});
+  }
+
+  handleSIMChange(event) {
+    const title = event.target.id
+    const UpdateUnitID = this.state.selectedNode.UnitID
+    let oldValue = this.state.selectedNode;
+    let newValue = this.state.selectedNode;
+    newValue.Hardware.SIM[title]=event.target.value
+    this.setState({
+      selectedNode:newValue
+    })
+    this.setState({UpdateUnitID:UpdateUnitID});
   }
 
   handleSubmit(event) {
-    console.log(this.state)
+    const UnitID= this.state.UpdateUnitID;
+    const updateUnit = {
+
+      Hardware: this.state.selectedNode.Hardware,
+      Software: this.state.selectedNode.Software,
+      Test: this.state.selectedNode.Test
+    }
     event.preventDefault();
+    nodeService.updateNode(UnitID, updateUnit).then(result => {
+      console.log(result)
+      if (result && result.success === true){
+        location.reload();
+      }
+    })
   }
 
   clickedUnitID(data, node) {
@@ -93,7 +163,6 @@ class NodeConfig extends React.Component {
     return(
       <div className="content-container marT">
         <SplitButton
-
           bsStyle={'success'}
           title={this.state.selectedID}
           id={'Units'}
@@ -116,59 +185,58 @@ class NodeConfig extends React.Component {
               <ControlLabel>IP address:</ControlLabel>
               <FormControl id="IP_address" onChange={this.handleSoftwareChange} defaultValue={this.state.selectedNode.Software.IP_address}></FormControl>
               <ControlLabel>BackDoor IP:</ControlLabel>
-              <FormControl id="BackDoor_IP" defaultValue={this.state.selectedNode.Software.BackDoor_IP}></FormControl>
+              <FormControl id="BackDoor_IP" onChange={this.handleSoftwareChange} defaultValue={this.state.selectedNode.Software.BackDoor_IP}></FormControl>
               <ControlLabel>AP:</ControlLabel>
-              <FormControl id="AP" defaultValue={this.state.selectedNode.Software.AP}></FormControl>
+              <FormControl id="AP" onChange={this.handleSoftwareChange} defaultValue={this.state.selectedNode.Software.AP}></FormControl>
               <ControlLabel>Sensor Board Version:</ControlLabel>
-              <FormControl id="SensorBoardVersion" defaultValue={this.state.selectedNode.Software.SensorBoardVersion}></FormControl>
+              <FormControl id="SensorBoardVersion" onChange={this.handleSoftwareChange} defaultValue={this.state.selectedNode.Software.SensorBoardVersion}></FormControl>
             </div>
             <div className='col-4 noPaddTop'>
               <h2>SSD</h2>
               <ControlLabel>Manufacturer:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.SSD.manufacturer}></FormControl>
+              <FormControl id="manufacturer" onChange={this.handleSSDChange} defaultValue={this.state.selectedNode.Hardware.SSD.manufacturer}></FormControl>
               <ControlLabel>Type:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.SSD.Type}></FormControl>
+              <FormControl id="Type" onChange={this.handleSSDChange} defaultValue={this.state.selectedNode.Hardware.SSD.Type}></FormControl>
               <ControlLabel>Lens:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.SSD.Capacity}></FormControl>
+              <FormControl id="Capacity" onChange={this.handleSSDChange} defaultValue={this.state.selectedNode.Hardware.SSD.Capacity}></FormControl>
               <h2>SIM</h2>
               <ControlLabel>Carrier:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.SIM.Carrier}></FormControl>
-              <ControlLabel>TyAPNpe:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.SIM.APN}></FormControl>
+              <FormControl id="Carrier" onChange={this.handleSIMChange} defaultValue={this.state.selectedNode.Hardware.SIM.Carrier}></FormControl>
+              <ControlLabel>APN:</ControlLabel>
+              <FormControl id="APN" onChange={this.handleSIMChange} defaultValue={this.state.selectedNode.Hardware.SIM.APN}></FormControl>
               <ControlLabel>IP address:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.SIM.IP_address}></FormControl>
+              <FormControl id="IP_address" onChange={this.handleSIMChange} defaultValue={this.state.selectedNode.Hardware.SIM.IP_address}></FormControl>
             </div>
             <div className='col-4 noPaddTop'>
               <h2>Test</h2>
               <ControlLabel>Who:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Test.Who}></FormControl>
+              <FormControl id="Who" onChange={this.handleTestChange} defaultValue={this.state.selectedNode.Test.Who}></FormControl>
               <ControlLabel>When:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Test.When}></FormControl>
+              <FormControl id="When" onChange={this.handleTestChange} defaultValue={this.state.selectedNode.Test.When}></FormControl>
               <ControlLabel>What:</ControlLabel>
-              <FormControl componentClass="textarea" defaultValue={this.state.selectedNode.Test.What}></FormControl>
+              <FormControl id="What" onChange={this.handleTestChange} componentClass="textarea" defaultValue={this.state.selectedNode.Test.What}></FormControl>
               <h2> Camera </h2>
               <ControlLabel>Manufacturer:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.Camera.manufacturer}></FormControl>
+              <FormControl id="manufacturer" onChange={this.handleCameraChange} defaultValue={this.state.selectedNode.Hardware.Camera.manufacturer}></FormControl>
               <ControlLabel>Type:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.Camera.Type}></FormControl>
+              <FormControl id="Type" onChange={this.handleCameraChange} defaultValue={this.state.selectedNode.Hardware.Camera.Type}></FormControl>
               <ControlLabel>Lens:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.Camera.lens}></FormControl>
-
+              <FormControl id="lens" onChange={this.handleCameraChange} defaultValue={this.state.selectedNode.Hardware.Camera.lens}></FormControl>
             </div>
             <div className='col-4 '>
               <h2>Hardware</h2>
               <ControlLabel>Platform:  </ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.Platform}></FormControl>
+              <FormControl id="Platform" onChange={this.handleHardwareChange} defaultValue={this.state.selectedNode.Hardware.Platform}></FormControl>
               <ControlLabel>UPS: </ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.UPS}></FormControl>
-              <ControlLabel>ensor Board:  </ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.SensorBoard}></FormControl>
+              <FormControl id="UPS" onChange={this.handleHardwareChange} defaultValue={this.state.selectedNode.Hardware.UPS}></FormControl>
+              <ControlLabel>Sensor Board:  </ControlLabel>
+              <FormControl id="SensorBoard" onChange={this.handleHardwareChange} defaultValue={this.state.selectedNode.Hardware.SensorBoard}></FormControl>
               <ControlLabel>WIFI Module:  </ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.WIFIModule}></FormControl>
+              <FormControl id="WIFIModule" onChange={this.handleHardwareChange} defaultValue={this.state.selectedNode.Hardware.WIFIModule}></FormControl>
               <ControlLabel>4G Module:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.FourGModule}></FormControl>
-              <ControlLabel>Reset board:</ControlLabel>
-              <FormControl defaultValue={this.state.selectedNode.Hardware.ResetBoard}></FormControl>
+              <FormControl id="FourGModule" onChange={this.handleHardwareChange} defaultValue={this.state.selectedNode.Hardware.FourGModule}></FormControl>
+              <ControlLabel>Reset Board:</ControlLabel>
+              <FormControl id="ResetBoard" onChange={this.handleHardwareChange} defaultValue={this.state.selectedNode.Hardware.ResetBoard}></FormControl>
               <div className="submit-btn">
                 <Button type="submit"  onClick={(e) => {this.handleClearForm}} className="btn btn-success">UPDATE NODE</Button>
               </div>
