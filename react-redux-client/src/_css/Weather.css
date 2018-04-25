@@ -8,6 +8,9 @@
   float: left;
   margin-right: 10px;
 }
+.weather {
+  height:auto;
+}
 .weather-icon {
   height: 50px;
   width: 50px;
@@ -15,4 +18,19 @@
   margin-left: 50px;
   margin-top: 45px;
 
+}
+.description{
+  text-transform: uppercase;
+}
+.current{
+  width: 20%;
+  float: left;
+}
+.forecast {
+  float: left;
+  width: 78%;
+}
+.forecast-detail {
+  float: left;
+  margin: 10px 10px;
 }

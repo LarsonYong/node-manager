@@ -1,11 +1,11 @@
 import React,  {Component} from 'react';
 import '../_css/Home.css';
 import { Link } from 'react-router-dom';
-
+import { Weather } from './Weather';
 
 var Nav = require('../_components/Nav');
 var TopBar = require('../_components/TopBar');
-var Weather = require('../_components/Weather');
+// var Weather = require('../_components/Weather');
 var Todo = require('../_components/Todo');
 
 

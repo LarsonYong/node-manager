@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "dateformat": "^3.0.3",
     "history": "^4.6.3",
     "react": "^16.3.1",
     "react-bootstrap": "^0.32.1",
