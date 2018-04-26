@@ -17,7 +17,7 @@ class Home extends React.Component {
       render() {
         const {user, users} = this.props;
         return (
-            <div className=" content-container   margT">
+            <div className=" content-container smMargT">
                 <div className="welcome-area">
                   <h1 className="welcome ">WELCOME ON DASHBOARD</h1>
                   <img className="welcome-icon" src={require('../_assets/Icons/pin.png')}></img>

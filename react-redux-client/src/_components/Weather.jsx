@@ -4,15 +4,24 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { weatherService } from '../_services';
 import { weatherActions } from '../_actions';
+import { LineChart, Line } from 'recharts';
+import {AreaChart, Area,Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 
+var moment = require('moment-timezone');
 var dateFormat = require('dateformat');
 
 class Weather extends React.Component {
   constructor(props){
     super(props);
+    var currentTime = Date.now()
+    var FcurTime = dateFormat(currentTime, "dddd, mmmm dS")
+    console.log(FcurTime)
     this.state={
-      sunRise: '0'
+      sunRise: '0',
+      data:[],
+      currentTime:FcurTime
     }
+
   }
 
 
@@ -40,7 +49,36 @@ class Weather extends React.Component {
           })
         }
 
+
     }
+    if(this.props.forecast.items ){
+      if (this.state.data.length === 0){
+        var daylist = []
+        var objects = this.props.forecast.items.list
+        objects.slice(0,30).map(function(key,index){
+          var timeUTC =  objects[index].dt_txt;
+          console.log(typeof timeUTC)
+          var timePDT =  moment.tz(timeUTC, "America/Los_Angeles").format();
+          console.log(timeUTC );
+          console.log("222: ",timePDT);
+          var prettyDate = timePDT.slice(5,10);
+          var prettyHour = timePDT.slice(11,16);
+          var timePDTPretty = prettyDate +' ' +  prettyHour
+
+
+          var temp = {
+            time: timePDTPretty,
+            temperature: objects[index].main.temp,
+            description: objects[index].weather[0].description
+          }
+          daylist.push(temp)
+        })
+        this.setState({
+          data:daylist
+        })
+      }
+    }
+
   }
 
   render(){
@@ -48,7 +86,6 @@ class Weather extends React.Component {
     if (this.props.forecast.items) {
         console.log(this.props.forecast.items.list[0])
     }
-
     return (
       <div className="clearfix" id="weather">
 
@@ -56,14 +93,13 @@ class Weather extends React.Component {
         {this.props.weather.loading &&<em> loading weather...</em>}
         {this.props.weather.items &&
           <div>
-          <div>City: {this.props.weather.items.name}</div>
+          <h4 className="city">Fremont</h4>
+          <p className="currentTime">{this.state.currentTime}</p>
+          <h1 className='temperature'>{this.props.weather.items.main.temp} °F</h1>
+          <p className="tempDetail">Humidity: {this.props.weather.items.main.humidity} %</p>
+          <p className="tempDetail">Wind Speed: {this.props.weather.items.wind.speed} m/h</p>
 
-          <div className="description">Weather: {this.props.weather.items.weather[0].description}</div>
-          <div>Current Temp: {this.props.weather.items.main.temp} °F</div>
-          <div>Wind Speed: {this.props.weather.items.wind.speed} m/h</div>
-          <div>humidity: {this.props.weather.items.main.humidity} %</div>
-          <div>Sun Rise: {this.state.sunRise}</div>
-          <div>Sun Set: {this.state.sunSet}</div>
+
           </div>
         }
         </div>
@@ -71,15 +107,16 @@ class Weather extends React.Component {
 
         {this.props.forecast.items &&
           <div >
+            <AreaChart width={1000} height={200} data={this.state.data} syncId="anyId"
+              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+              <CartesianGrid strokeDasharray="3 3"/>
+              <XAxis dataKey="time"/>
+              <YAxis/>
+              <Tooltip/>
+              <Area type='monotone' dataKey='temperature' stroke='#82ca9d' fill='#82ca9d' />
+              <Brush />
+            </AreaChart>
 
-            <div>  Current location: {this.props.forecast.items.city.name}</div>
-            {this.props.forecast.items.list.slice(0,5).map((day,index) => (
-              <div className="forecast-detail">
-                <div key={index}>Date: {day.dt_txt.slice(5,10)}</div>
-                <div>Weather: {day.weather[0].description} </div>
-                <div>temperature: {day.main.temp} °F</div>
-              </div>
-            ))}
           </div>}
         </div>
 
@@ -99,3 +136,10 @@ class Weather extends React.Component {
 
  const connectedWeather = connect(mapStateToProps)(Weather);
  export { connectedWeather as Weather };
+
+
+ // <div className="description">Weather: {this.props.weather.items.weather[0].description}</div>
+ // <div>Current Temp: {this.props.weather.items.main.temp} °F</div>
+ //
+ // <div>Sun Rise: {this.state.sunRise}</div>
+ // <div>Sun Set: {this.state.sunSet}</div>
