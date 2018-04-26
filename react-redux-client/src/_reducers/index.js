@@ -5,6 +5,7 @@ import { users } from './users.reducer';
 import { alert } from './alert.reducer';
 import { nodes } from './nodes.reducer';
 import { weathers, weather } from './weathers.reducer';
+import { todos } from './todos.reducer';
 
 const rootReducer = combineReducers({
   authentication,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   alert,
   nodes,
   weathers,
-  weather
+  weather,
+  todos
 });
 
 export default rootReducer;

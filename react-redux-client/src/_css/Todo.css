@@ -18,3 +18,15 @@
 .right {
   float: right;
 }
+.table-btn {
+  margin: 0 5px 0 0px;
+}
+.todo-text {
+  width: 60%;
+}
+.todo-btn-area {
+  width: 30%;
+}
+.add-btn {
+  margin-left: 20px;
+}

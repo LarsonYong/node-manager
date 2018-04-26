@@ -15,7 +15,6 @@ class Weather extends React.Component {
     super(props);
     var currentTime = Date.now()
     var FcurTime = dateFormat(currentTime, "dddd, mmmm dS")
-    console.log(FcurTime)
     this.state={
       sunRise: '0',
       data:[],
@@ -56,11 +55,8 @@ class Weather extends React.Component {
         var daylist = []
         var objects = this.props.forecast.items.list
         objects.slice(0,30).map(function(key,index){
-          var timeUTC =  objects[index].dt_txt;
-          console.log(typeof timeUTC)
+          var timeUTC =  new Date(objects[index].dt * 1000) ;
           var timePDT =  moment.tz(timeUTC, "America/Los_Angeles").format();
-          console.log(timeUTC );
-          console.log("222: ",timePDT);
           var prettyDate = timePDT.slice(5,10);
           var prettyHour = timePDT.slice(11,16);
           var timePDTPretty = prettyDate +' ' +  prettyHour
@@ -84,7 +80,7 @@ class Weather extends React.Component {
   render(){
     const { weathers } = this.props;
     if (this.props.forecast.items) {
-        console.log(this.props.forecast.items.list[0])
+
     }
     return (
       <div className="clearfix" id="weather">
@@ -107,7 +103,7 @@ class Weather extends React.Component {
 
         {this.props.forecast.items &&
           <div >
-            <AreaChart width={1000} height={200} data={this.state.data} syncId="anyId"
+            <AreaChart width={1100} height={200} data={this.state.data} syncId="anyId"
               margin={{top: 10, right: 30, left: 0, bottom: 0}}>
               <CartesianGrid strokeDasharray="3 3"/>
               <XAxis dataKey="time"/>

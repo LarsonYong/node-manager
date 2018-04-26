@@ -98,6 +98,7 @@ export const getTodo = (req,res) => {
 
 export const deleteTodo = (req,res) => {
   var token = req.headers['x-access-token'];
+  console.log(req)
   if (!token) {
     return res.status(401).send({ auth: false, message: 'No token provided.' });
   }
@@ -110,7 +111,7 @@ export const deleteTodo = (req,res) => {
       if(err){
       return res.json({'auth':true, 'success':false,'message':'Some Error',err});
       }
-  return res.json({'auth':true, 'success':true,'message':todo.todoText+' deleted successfully'});
+  return res.json({'auth':true, 'success':true,'message':'Todo deleted successfully'});
     })
   })
 }
