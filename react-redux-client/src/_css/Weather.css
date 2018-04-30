@@ -43,7 +43,7 @@
 }
 .forecast-detail {
   float: left;
-  margin: 10px 10px;
+  margin: 0px 10px;
 }
 .temperature {
   font-family: 'Titillium Web', sans-serif;
