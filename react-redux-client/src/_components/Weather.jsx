@@ -32,7 +32,7 @@ class Weather extends React.Component {
 
   componentWillUpdate(){
     if (this.props.weather.items) {
-
+        console.log(this.props.weather.items)
         var _sunRise = new Date(this.props.weather.items.sys.sunrise);
         var _sunSet = new Date(this.props.weather.items.sys.sunset);
         var FsunRise = dateFormat(_sunRise, "h:MM:ss TT")
@@ -92,7 +92,7 @@ class Weather extends React.Component {
           <h4 className="city">Fremont</h4>
           <p className="currentTime">{this.state.currentTime}</p>
           <h1 className='temperature'>{this.props.weather.items.main.temp} °F</h1>
-          <p className="tempDetail">Humidity: {this.props.weather.items.main.humidity} %</p>
+          <p className="tempDetail bold">{this.props.weather.items.weather[0].description} </p>
           <p className="tempDetail">Wind Speed: {this.props.weather.items.wind.speed} m/h</p>
 
 
