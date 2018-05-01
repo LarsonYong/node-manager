@@ -2,6 +2,7 @@
   /*margin-top: -43px;*/
   z-index: 10;
 }
+:focus { outline: none; }
 #home {
   background-color: white!important;
 }

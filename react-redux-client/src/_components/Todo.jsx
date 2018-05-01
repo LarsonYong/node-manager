@@ -2,7 +2,7 @@ import React,  {Component} from 'react';
 import '../_css/Todo.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Table } from 'react-bootstrap';
+import { Table, Modal } from 'react-bootstrap';
 // import { Button } from 'react-bootstrap';
 import Button from 'react-bootstrap/lib/Button';
 import { todoActions} from '../_actions';
@@ -15,7 +15,11 @@ class Todo extends React.Component {
     super(props);
     this.hideEditModal = this.hideEditModal.bind(this);
     this.submitEditTodo = this.submitEditTodo.bind(this);
-
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.state = {
+      show: false
+    };
   }
 
   componentDidMount() {
@@ -24,6 +28,14 @@ class Todo extends React.Component {
 
   showEditModal(){
 
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
   }
 
   hideEditModal(){
@@ -59,7 +71,7 @@ class Todo extends React.Component {
           {this.props.todos.error && <span className="text-danger">ERROR: {this.props.todos.error}</span>}
           <div className="glass">
           <div className="glass-title">
-            <h3>My todo list:   <button type="button" onClick={() => this.showEditModal()} className="btn btn-sm btn-default left table-btn add-btn">+</button></h3>
+            <h3>My todo list:   <button type="button" onClick={this.handleShow} className="btn btn-sm btn-default left table-btn add-btn">+</button></h3>
 
           </div>
           {this.props.todos.items && <Table striped bordered condensed hover className="todoT"><tbody>
@@ -72,13 +84,15 @@ class Todo extends React.Component {
               <td className="todo-btn-area">
 
               <button type="button" className="btn btn-sm btn-success right table-btn">Done</button>
-              <button type="button" className="btn btn-sm btn-default right table-btn">Modify</button>
+              
               </td>
             </tr>
           ))}
 
           </tbody></Table>}
-
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <TodoEditForm />
+          </Modal>
           </div>
         </div>
     )

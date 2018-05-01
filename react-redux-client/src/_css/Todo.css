@@ -30,3 +30,23 @@
 .add-btn {
   margin-left: 20px;
 }
+
+
+.todofromrow {
+  margin-top: 15px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+.sumbit-button {
+  margin-right: 25px;
+  margin-left: 25px;
+  height: 45px;
+  margin-bottom: 10px;
+}
+.btn-resize {
+  height: 35px;
+}
+.control-label {
+  font-size: 15px;
+  padding-bottom: 5px;
+}

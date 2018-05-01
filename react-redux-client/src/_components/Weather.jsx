@@ -27,7 +27,7 @@ class Weather extends React.Component {
   componentDidMount(){
     this.props.dispatch(weatherActions.get5DayWeather());
     this.props.dispatch(weatherActions.getCurWeather());
-
+    
   }
 
   componentWillUpdate(){
