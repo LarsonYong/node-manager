@@ -13,9 +13,10 @@ import TodoEditForm from './TodoEditForm';
 class Todo extends React.Component {
   constructor(props){
     super(props);
+    this.hideEditModal = this.hideEditModal.bind(this);
+    this.submitEditTodo = this.submitEditTodo.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.addTodo = this.addTodo.bind(this);
     this.state = {
       show: false
     };
@@ -23,6 +24,10 @@ class Todo extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(todoActions.getAll());
+  }
+
+  showEditModal(){
+
   }
 
   handleClose() {
@@ -33,32 +38,38 @@ class Todo extends React.Component {
     this.setState({ show: true });
   }
 
-  addTodo(e){
+  hideEditModal(){
+    this.props.mappedhideEditModal();
+  }
+
+  submitEditTodo(e){
     e.preventDefault();
-    const form = document.getElementById('addTodoForm');
-    console.log(this.props.name)
-    if(form.todoText.value !== ""){
+    const editForm = document.getElementById('EditTodoForm');
+    if(editForm.todoText.value !== ""){
       const data = new FormData();
-      data.append('todoText', form.todoText.value);
-      data.append('todoDesc', this.props.name);
-      console.log(data);
-      form.reset();
+      data.append('id', editForm.id.value);
+      data.append('todoText', editForm.todoText.value);
+      data.append('todoDesc', editForm.todoDesc.value);
+      this.props.mappedEditTodo(data);
     }
     else{
-      return ;
+      return;
     }
-}
+  }
+
 
 
   render(){
-    const { todos,user } = this.props;
+    const { todos } = this.props;
     const todoState = this.props.mappedTodoState;
+    // const todos = todoState.todos;
+    // const editTodo = todoState.todoToEdit;
     console.log(this.props)
     return (
         <div id="Todo">
           {this.props.todos.loading &&<em>Loading todos...</em>}
           {this.props.todos.error && <span className="text-danger">ERROR: {this.props.todos.error}</span>}
-          <div className="glass">
+        
           <div className="glass-title">
             <h3>My todo list:   <button type="button" onClick={this.handleShow} className="btn btn-sm btn-default left table-btn add-btn">+</button></h3>
 
@@ -80,9 +91,9 @@ class Todo extends React.Component {
 
           </tbody></Table>}
           <Modal show={this.state.show} onHide={this.handleClose}  bsSize="small">
-            <TodoEditForm addTodo={this.addTodo}/>
+            <TodoEditForm />
           </Modal>
-          </div>
+
         </div>
     )
   }

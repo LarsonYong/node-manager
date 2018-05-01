@@ -12,7 +12,7 @@
 .weather {
   height:auto;
   width: 1500px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .weather-icon {
   height: 50px;
@@ -43,7 +43,7 @@
 }
 .forecast-detail {
   float: left;
-  margin: 0px 10px;
+  margin: 10px 10px;
 }
 .temperature {
   font-family: 'Titillium Web', sans-serif;

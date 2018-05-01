@@ -30,33 +30,13 @@ class Home extends React.Component {
                   <div className="col-6 white">
                       <Todo name={user}/>
                   </div>
-                  <div className="col-6 white">
-                    <div className="other">
-                    <div >Hi {user}!</div>
-                    <p>You're logged in with React & JWT!!</p>
-                    <h3>Users from secure api end point:</h3>
-                      {users.loading && <em>Loading users...</em>}
-                      {users.error && <span classNameName="text-danger">ERROR: {users.error}</span>}
-                      {users.items &&
-                        <ul>
-                          {users.items.map((user, index) =>
-                              <li key={user._id}>
-                                  {user.username }
-                                  </li>
-                                )}
-                        </ul>
-                      }
+                  <div className="col-6 white ">
+                    <h3 className="quote-title">Inspiring Quote of the day:</h3>
+                    <div className="other backg2">
 
-                    <p>
-                    <Link to="/login">Logout</Link>
-                    </p>
-
+                      <h3 className="quote">The only person you should try to be better than is the person you were yesterday</h3>
                     </div>
-                    <div className="shotcut white">
-                    <div className="template1">Shotcut area</div>
-                    </div>
-                    </div>
-
+                  </div>
                 </div>
             </div>
 
@@ -65,3 +45,9 @@ class Home extends React.Component {
 }
 
 module.exports = Home;
+//
+//
+// <div className="shotcut white">
+// <div className="template1">Shotcut area</div>
+//
+// </div>
