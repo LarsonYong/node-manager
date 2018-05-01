@@ -83,14 +83,14 @@ class Todo extends React.Component {
               </td>
               <td className="todo-btn-area">
 
-              <button type="button" className="btn btn-sm btn-success right table-btn">Done</button>
-              
+              <button type="button" className="btn btn-sm btn-success middle right table-btn">Done</button>
+
               </td>
             </tr>
           ))}
 
           </tbody></Table>}
-          <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal show={this.state.show} onHide={this.handleClose}  bsSize="small">
             <TodoEditForm />
           </Modal>
           </div>
@@ -99,7 +99,6 @@ class Todo extends React.Component {
   }
 }
 
-// module.exports = Todo;
 function mapStateToProps(state) {
     const { todos } = state;
     return {
