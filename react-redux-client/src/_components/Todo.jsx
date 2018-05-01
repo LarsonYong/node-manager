@@ -13,10 +13,9 @@ import TodoEditForm from './TodoEditForm';
 class Todo extends React.Component {
   constructor(props){
     super(props);
-    this.hideEditModal = this.hideEditModal.bind(this);
-    this.submitEditTodo = this.submitEditTodo.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.addTodo = this.addTodo.bind(this);
     this.state = {
       show: false
     };
@@ -24,10 +23,6 @@ class Todo extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(todoActions.getAll());
-  }
-
-  showEditModal(){
-
   }
 
   handleClose() {
@@ -38,32 +33,26 @@ class Todo extends React.Component {
     this.setState({ show: true });
   }
 
-  hideEditModal(){
-    this.props.mappedhideEditModal();
-  }
-
-  submitEditTodo(e){
+  addTodo(e){
     e.preventDefault();
-    const editForm = document.getElementById('EditTodoForm');
-    if(editForm.todoText.value !== ""){
+    const form = document.getElementById('addTodoForm');
+    console.log(this.props.name)
+    if(form.todoText.value !== ""){
       const data = new FormData();
-      data.append('id', editForm.id.value);
-      data.append('todoText', editForm.todoText.value);
-      data.append('todoDesc', editForm.todoDesc.value);
-      this.props.mappedEditTodo(data);
+      data.append('todoText', form.todoText.value);
+      data.append('todoDesc', this.props.name);
+      console.log(data);
+      form.reset();
     }
     else{
-      return;
+      return ;
     }
-  }
-
+}
 
 
   render(){
-    const { todos } = this.props;
+    const { todos,user } = this.props;
     const todoState = this.props.mappedTodoState;
-    // const todos = todoState.todos;
-    // const editTodo = todoState.todoToEdit;
     console.log(this.props)
     return (
         <div id="Todo">
@@ -91,7 +80,7 @@ class Todo extends React.Component {
 
           </tbody></Table>}
           <Modal show={this.state.show} onHide={this.handleClose}  bsSize="small">
-            <TodoEditForm />
+            <TodoEditForm addTodo={this.addTodo}/>
           </Modal>
           </div>
         </div>

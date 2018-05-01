@@ -28,7 +28,7 @@ class Home extends React.Component {
                     <Weather />
                   </div>
                   <div className="col-6 white">
-                      <Todo />
+                      <Todo name={user}/>
                   </div>
                   <div className="col-6 white">
                     <div className="other">

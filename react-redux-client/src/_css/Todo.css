@@ -33,7 +33,10 @@
 .add-btn {
   margin-left: 20px;
 }
-
+.form-horizontal .form-group {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 .todofromrow {
   margin-top: 15px;
