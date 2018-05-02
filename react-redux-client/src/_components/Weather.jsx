@@ -27,7 +27,7 @@ class Weather extends React.Component {
   componentDidMount(){
     this.props.dispatch(weatherActions.get5DayWeather());
     this.props.dispatch(weatherActions.getCurWeather());
-    
+
   }
 
   componentWillUpdate(){
@@ -103,7 +103,7 @@ class Weather extends React.Component {
 
         {this.props.forecast.items &&
           <div >
-            <AreaChart width={1100} height={200} data={this.state.data} syncId="anyId"
+            <AreaChart width={1130} height={200} data={this.state.data} syncId="anyId"
               margin={{top: 10, right: 30, left: 0, bottom: 0}}>
               <CartesianGrid strokeDasharray="3 3"/>
               <XAxis dataKey="time"/>
