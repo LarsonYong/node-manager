@@ -2,7 +2,8 @@ import React,  {Component} from 'react';
 import '../_css/Home.css';
 import { Link } from 'react-router-dom';
 import { Weather } from './Weather';
-import { Todo } from './Todo'
+import { Todo } from './Todo';
+import { quoteService } from '../_services/quote.service';
 
 var Nav = require('../_components/Nav');
 var TopBar = require('../_components/TopBar');
@@ -13,10 +14,42 @@ var TopBar = require('../_components/TopBar');
 class Home extends React.Component {
       constructor(props){
         super(props);
+        this.state={
+          quote:{}
+        }
+        const quote = quoteService.getToQ().then(
+          resp => this.setState({
+            quote: resp
+          })
+        )
+      }
+
+      componentDidMount(){
+        if(this.state.quote.success){
+
+        }
+      }
+
+      componentWillUpdate(){
+        if(this.state.quote.success){
+          var randomId = new Date().getTime();
+          console.log(this.state.quote.contents.quotes[0])
+          const background = this.state.quote.contents.quotes[0].background
+          document.getElementById('QuoteBKG').style.backgroundImage = 'url(' + this.state.quote.contents.quotes[0].background + '?random=' + randomId + ')';
+
+          console.log(background);
+        }
       }
 
       render() {
         const {user, users} = this.props;
+        var randomId = new Date().getTime();
+        let style = {}
+        if(this.state.quote.success){
+          let style = {
+            backgroungImage: 'url(' + this.state.quote.contents.quotes[0].background + '?random=' + randomId + ')'
+          }
+        }
         return (
             <div className=" content-container smMargT">
                 <div className="welcome-area">
@@ -32,7 +65,7 @@ class Home extends React.Component {
                   </div>
                   <div className="col-6 white ">
                     <h3 className="quote-title">Inspiring Quote of the day:</h3>
-                    <div className="other backg2">
+                    <div id="QuoteBKG" style={style} className="other backg2">
 
                       <h3 className="quote">The only person you should try to be better than is the person you were yesterday</h3>
                     </div>

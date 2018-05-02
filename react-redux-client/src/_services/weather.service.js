@@ -25,7 +25,7 @@ function getCurrent(){
   return fetch('http://api.openweathermap.org/data/2.5/weather?zip=94539,us&APPID=dde79685c5a47da02f42960ad609328f&units=imperial', requestOptions)
           .then(resp => resp.json())
           .then(json => {
-            console.log(json)
+            
             return json
           })
 }

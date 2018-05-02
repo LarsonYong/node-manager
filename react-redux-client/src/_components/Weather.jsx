@@ -32,7 +32,6 @@ class Weather extends React.Component {
 
   componentWillUpdate(){
     if (this.props.weather.items) {
-        console.log(this.props.weather.items)
         var _sunRise = new Date(this.props.weather.items.sys.sunrise);
         var _sunSet = new Date(this.props.weather.items.sys.sunset);
         var FsunRise = dateFormat(_sunRise, "h:MM:ss TT")

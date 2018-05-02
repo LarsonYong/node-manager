@@ -64,12 +64,11 @@ class Todo extends React.Component {
     const todoState = this.props.mappedTodoState;
     // const todos = todoState.todos;
     // const editTodo = todoState.todoToEdit;
-    console.log(this.props)
     return (
         <div id="Todo">
           {this.props.todos.loading &&<em>Loading todos...</em>}
           {this.props.todos.error && <span className="text-danger">ERROR: {this.props.todos.error}</span>}
-        
+
           <div className="glass-title">
             <h3>My todo list:   <button type="button" onClick={this.handleShow} className="btn btn-sm btn-default left table-btn add-btn">+</button></h3>
 
@@ -77,7 +76,7 @@ class Todo extends React.Component {
           {this.props.todos.items && <Table striped bordered condensed hover className="todoT"><tbody>
 
             {this.props.todos.items.map((todo,index) => (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td className="todo-text">{todo.todoText}
               </td>
