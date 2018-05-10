@@ -66,8 +66,8 @@ class Home extends React.Component {
                   <div className="col-6 white ">
                     <h3 className="quote-title">Inspiring Quote of the day:</h3>
                     <div id="QuoteBKG" style={style} className="other backg2">
-
-                      <h3 className="quote">The only person you should try to be better than is the person you were yesterday</h3>
+                      {this.state.quote.contents    && <h3 className="quote">{this.state.quote.contents.quotes[0].quote}</h3>}
+                      {this.state.quote.contents    && <h3 className="quote author">--{this.state.quote.contents.quotes[0].author}</h3>}
                     </div>
                   </div>
                 </div>
